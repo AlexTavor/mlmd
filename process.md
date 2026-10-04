@@ -629,10 +629,13 @@ review of their own (`research/review-cost-2026-10-04.md`).
 
 - **You:** use what the batch built. If the batch-end box is checked, the next batch waits for your
   item. What you find becomes items in the plan.
-- **Mutation testing** on what the batch changed in the modules that hold data or make decisions.
-  A tool (Stryker, for TypeScript) makes small changes to the code and reruns the tests, and a
-  change no test notices is a gap. Read every survivor the same day. Each one is a missing test,
-  dead code, or a change that makes no difference, and each is closed.
+- **Mutation testing** on what the batch changed in the modules that hold data or make decisions:
+  the mutants on the files the batch changed, and on the modules whose tests it changed, each run
+  against the whole suite. A tool (Stryker, for TypeScript) makes small changes to the code and
+  reruns the tests, and a change no test notices is a gap. Read every survivor the same day. Each
+  one is a missing test, dead code, or a change that makes no difference, and each is closed. A run
+  over the whole codebase re-judges code no batch changed and takes hours; it runs only when you
+  ask for one.
 - **A reading pass** for failures that leave no trace: swallowed errors, work started and never
   finished, success reported for nothing written.
 - **Once no session can read the whole codebase:** a check for duplicated code. The agent writes a
@@ -641,7 +644,10 @@ review of their own (`research/review-cost-2026-10-04.md`).
 
 **Why:** a mutation run found a fault in code the current model wrote: an unreadable save was
 marked writable, so one refused read would have written a new save over the player's. A reading
-pass found two hangs that no check could see.
+pass found two hangs that no check could see. Only what the batch changed: in one project, two runs
+over the whole codebase took over two hours each, for 532 and then 604 mutants, and caught every
+one both times; between them the batch had changed the files of 135 of the 604, none in its
+simulation (`research/mutation-scope-2026-10-05.md`).
 
 ## 8. End of an MVP, and release
 
