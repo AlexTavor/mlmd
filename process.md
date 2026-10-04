@@ -241,16 +241,24 @@ vocabulary, so dod can draw it:
   second copy of the plan in step by hand.
 
 **Status comes from git.** Nobody writes it, except for one case:
-- **done:** a merge commit on main names the item;
+- **done:** a merge into main names the item in a `Done:` trailer, the last paragraph of its
+  commit message: `Done: W7`, or `Done: W7, W8` for a merge that finishes more than one. Only
+  merges on main's first-parent line count, the ones that moved main;
 - **in progress:** a branch named for the item exists;
 - **waiting for you:** one of your items whose dependencies are all done;
 - **blocked:** the one status written by hand, in the item's `status`, with a note saying what it
   waits for;
 - **pending:** everything else.
 
+A merge that leaves the trailer out leaves its items undone, and no check can catch it, as none
+knows which items a merge finishes. So the merge script writes the trailer (see Git), and the
+status after a merge shows the item done.
+
 Hand-kept status went stale in tiny twice. robotics-lms moved status at two events only, the LLD
 written and the merge, and still needed a copy ritual between main and its worktrees. Both of its
-events are git events.
+events are git events. In plague, four merged items still read pending for up to three hours on
+2026-10-04, until a later merge set them by hand (plague `e4c5c26`). plague has read status from
+`Done:` trailers since (`tools/plan.ts`, merged in `e2da089`).
 
 **`.pdd/constitution.md`** holds these rules. dod also uses the file to recognize the project.
 
@@ -259,7 +267,8 @@ events are git events.
 - no dependency on an item that doesn't exist;
 - exactly one final item;
 - every behavior of the current MVP delivered by an item;
-- an LLD for every build item that has started.
+- an LLD for every build item that has started;
+- every item a `Done:` trailer names is in the plan.
 
 **The plan view.** dod draws the plan as a dependency graph. It lists the items ready to start, the
 critical path and how many items can run at once. It reads the plan and the status from main in
@@ -345,11 +354,13 @@ make an irreversible mistake cheaper.
   doesn't work: a move from one worktree beside the repository to another is refused, and on
   Claude Code 2.1.284 entering by path asks you every time (`docs/spikes/worktree-switching.md`).
 - **Names:** the branch is the item's id and a short name (`w7-catalog`), and the merge commit
-  names it too. The plan view reads both.
+  names the item in its `Done:` trailer. The plan view reads both: the branch for in progress, the
+  trailer for done.
 - **Merging.** The merge script does these steps:
   1. In the item's worktree, build the merge on a detached HEAD at main:
-     `git switch --detach main && git -c rerere.enabled=true merge --no-ff <branch>`. Resolve any
-     conflicts there. rerere records each resolution, so a retry replays it.
+     `git switch --detach main && git -c rerere.enabled=true merge --no-ff <branch>`, with a
+     message ending in the `Done:` trailer, the item's id taken from the branch's name. Resolve
+     any conflicts there. rerere records each resolution, so a retry replays it.
   2. Run the gates on the merged tree.
   3. Move main with `git push . HEAD:main`. Git allows only a fast-forward, so if main moved in the
      meantime, go back to step 1 on the new main.
@@ -657,7 +668,7 @@ pass found two hangs that no check could see.
 Parts of this process rely on tools that don't exist yet:
 - **dod:**
   - `batches` and `batch` as names for its `phases` and `phase`;
-  - status derived from git;
+  - status derived from git, from the `Done:` trailers and the branches;
   - the plan read from main instead of from a checkout;
   - your items shown as waiting for you;
   - adding a project in one step. Today a project is added by hand to dod's PDD provider config.
