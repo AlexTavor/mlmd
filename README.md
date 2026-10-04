@@ -45,7 +45,7 @@ writing its results to files.
 | 3 | Spikes for the risky assumptions | Read the verdicts |
 | 4 | The build plan: work items in batches, with their dependencies | Read the plan |
 | 5 | A design for each batch that changes the architecture | Answer its questions |
-| 6 | Each work item: design, review, code, attack, merge | Approve the stops you kept |
+| 6 | Each batch's item designs, reviewed together; then each item: code, attack, merge | Approve the stops you kept |
 | 7 | The end of a batch: mutation testing and a reading pass | Use what was built |
 | 8 | The end of an MVP: its verdict, and a release | Give the verdict |
 

@@ -1,6 +1,6 @@
 # Building software with a coding agent
 
-*Draft, 2026-09-29, revised 2026-09-30. Replaces the Superpowers plan
+*Draft, 2026-09-29, revised 2026-09-30 and 2026-10-04. Replaces the Superpowers plan
 (`~/PersonalKB/drafts/superpowers-layer-plan.md`). Covers requirements through release. The
 document forms follow robotics-lms (`research/robotics-lms-process-2026-09-30.md`). The Vision and
 the PRD per MVP follow RUP's Vision and iteration plans. The evidence for the build phases is in
@@ -241,16 +241,24 @@ vocabulary, so dod can draw it:
   second copy of the plan in step by hand.
 
 **Status comes from git.** Nobody writes it, except for one case:
-- **done:** a merge commit on main names the item;
+- **done:** a merge into main names the item in a `Done:` trailer, the last paragraph of its
+  commit message: `Done: W7`, or `Done: W7, W8` for a merge that finishes more than one. Only
+  merges on main's first-parent line count, the ones that moved main;
 - **in progress:** a branch named for the item exists;
 - **waiting for you:** one of your items whose dependencies are all done;
 - **blocked:** the one status written by hand, in the item's `status`, with a note saying what it
   waits for;
 - **pending:** everything else.
 
+A merge that leaves the trailer out leaves its items undone, and no check can catch it, as none
+knows which items a merge finishes. So the merge script writes the trailer (see Git), and the
+status after a merge shows the item done.
+
 Hand-kept status went stale in tiny twice. robotics-lms moved status at two events only, the LLD
 written and the merge, and still needed a copy ritual between main and its worktrees. Both of its
-events are git events.
+events are git events. In plague, four merged items still read pending for up to three hours on
+2026-10-04, until a later merge set them by hand (plague `e4c5c26`). plague has read status from
+`Done:` trailers since (`tools/plan.ts`, merged in `e2da089`).
 
 **`.pdd/constitution.md`** holds these rules. dod also uses the file to recognize the project.
 
@@ -259,7 +267,8 @@ events are git events.
 - no dependency on an item that doesn't exist;
 - exactly one final item;
 - every behavior of the current MVP delivered by an item;
-- an LLD for every build item that has started.
+- an LLD for every build item that has started;
+- every item a `Done:` trailer names is in the plan.
 
 **The plan view.** dod draws the plan as a dependency graph. It lists the items ready to start, the
 critical path and how many items can run at once. It reads the plan and the status from main in
@@ -304,8 +313,8 @@ How each box is enforced:
   runs.
 - **Batch end:** one of your items at the end of each batch, which the next batch's first items
   depend on. The plan view shows it as waiting for you.
-- **LLD:** the session stops after the LLD's review and waits for your word, which the LLD
-  records. Nothing mechanical enforces this box.
+- **LLD:** the session stops after the batch's design review and waits for your word, which each
+  LLD records. Nothing mechanical enforces this box.
 
 **A stop whatever the boxes say:** any irreversible operation on real data, such as a migration
 against production data, deleting stored data, or changing who can access what. The script that
@@ -345,11 +354,13 @@ make an irreversible mistake cheaper.
   doesn't work: a move from one worktree beside the repository to another is refused, and on
   Claude Code 2.1.284 entering by path asks you every time (`docs/spikes/worktree-switching.md`).
 - **Names:** the branch is the item's id and a short name (`w7-catalog`), and the merge commit
-  names it too. The plan view reads both.
+  names the item in its `Done:` trailer. The plan view reads both: the branch for in progress, the
+  trailer for done.
 - **Merging.** The merge script does these steps:
   1. In the item's worktree, build the merge on a detached HEAD at main:
-     `git switch --detach main && git -c rerere.enabled=true merge --no-ff <branch>`. Resolve any
-     conflicts there. rerere records each resolution, so a retry replays it.
+     `git switch --detach main && git -c rerere.enabled=true merge --no-ff <branch>`, with a
+     message ending in the `Done:` trailer, the item's id taken from the branch's name. Resolve
+     any conflicts there. rerere records each resolution, so a retry replays it.
   2. Run the gates on the merged tree.
   3. Move main with `git push . HEAD:main`. Git allows only a fast-forward, so if main moved in the
      meantime, go back to step 1 on the new main.
@@ -369,15 +380,16 @@ from its description: in one project's records, 1,472 reminders to apply a pract
 to open that practice 10 times. There are three kinds:
 - **Guidance, in the working session:** skills and templates. The interview, the LLD template, the
   merge procedure, handoff.
-- **Checks, in a fresh session:** workflows. design-review for each design document, and the
-  adversarial review before merge. Whatever judges the agent's work runs outside the session that
+- **Checks, in a fresh session:** workflows. design-review for the design documents, a batch's
+  together, and the adversarial review before merge. Whatever judges the agent's work runs outside the session that
   made it.
 - **Enforcement and setup:** hooks and scripts. The gates in the pre-push hook, the refusal of
   `--no-verify`, the WorktreeCreate hook, the status line and plan view at session start, the
   first-session install, and the trust hook with its permission rules.
 
-design-review's kinds, per document: the Vision, and each MVP's PRD with its behaviors, use `prd`
-(`gdd` for a game). architecture.md and a batch HLD use `hld`. An LLD uses `lld`.
+design-review's kinds: the Vision, and each MVP's PRD with its behaviors, use `prd` (`gdd` for a
+game). architecture.md uses `hld`. A batch's designs, reviewed together, use `hld` when the batch has
+an HLD and `lld` when it doesn't. An item's review of its own uses `lld`.
 
 They ship as one Claude Code plugin, mlmd: skills, workflows (in the plugin's `workflows/` folder,
 run as `/mlmd:<workflow>`), hooks and templates. engineering-discipline's skills are not part of it:
@@ -535,7 +547,8 @@ After phase 3 for MVP 1, and after the phase 2 check for a later MVP.
 - **Ask:** "Plan MVP N's build in .pdd/plan.json: work items in batches, each with what it cannot
   correctly start until, its size, its risk and the behaviors it delivers. Give each batch a goal
   and exit criteria that can be checked. End with the MVP's verdict as the one final item."
-- **Size items for review:** an item is small enough when its LLD can be reviewed in one sitting.
+- **Size items for review:** an item is small enough when its LLD can be read in one sitting, and a
+  batch when its designs can be reviewed together in one.
   A file that will obviously grow past a few hundred lines is a reason to split the item now, not
   after the code exists.
 - **Your items:** the MVP's verdict, and a stop at the end of each batch while that trust box is
@@ -564,14 +577,15 @@ architecture.md.
   - what the LLDs must decide;
   - its changes to the glossary, the rules and the assumptions;
   - what it defers.
-- **Review:** design-review, kind `hld`, in a fresh session. A finding that would overturn one of
-  your decisions comes to you as a question.
-- **Done when:** the review's findings are settled. Where the batch changes the architecture,
+- **Review:** together with the batch's LLDs, in the batch's one design review (6, step 2). A
+  finding that would overturn one of your decisions comes to you as a question.
+- **Done when:** the batch review's findings are settled. Where the batch changes the architecture,
   architecture.md changes in the same commit.
 
 ## 6. Work items
 
-Each item runs in its own worktree, in its own session.
+A batch's LLDs are written first, all of them in one session, after its HLD if it has one, and
+reviewed together. Then each item is built in its own worktree, in its own session.
 
 1. **LLD**, `docs/lld/W<id>-<name>.md`, from the template:
    - a header: the behaviors it delivers, what it depends on, what you'll open to see it work, and
@@ -582,8 +596,11 @@ Each item runs in its own worktree, in its own session.
      fails or reaches the user, never quietly;
    - **Tests:** each test file, what it pins, and the behavior and rule ids it covers;
    - **Not doing:** what a reader would expect here and won't find, and where it happens instead.
-2. **Design review** of every LLD, kind `lld`, in a fresh session. The findings are fixed in the LLD
-   before any code. If the LLD box is checked, the session then waits for your word.
+2. **Design review, one per batch,** in a fresh session, once all the batch's LLDs are written: its
+   HLD, if it has one, and its LLDs, put into one file, since design-review reads one document. An
+   item the plan sizes XL, or rates high risk, also gets a review of its own. The findings are fixed
+   in the documents before any of the batch's code. If the LLD box is checked, the session then
+   waits for your word.
 3. **Implementation**, in the worktree. The gates run between edits, and each verified step is a
    commit.
 4. **Adversarial review before merge**, in a fresh session. It attacks:
@@ -599,6 +616,14 @@ Each item runs in its own worktree, in its own session.
 consequential defects, for about 15% of its tokens. Nine of the ten largest code defects they found
 were in those three kinds of code. And agent-written tests can pass without testing anything: one
 set of removal tests passed on code that removed nothing.
+
+**Why one design review per batch:** a reviewer reads the code and the standing documents before
+the document it is given, and that reading, not the document, sets most of the cost. In one
+project, 74 reviews of single designs cost 189k to 480k tokens each, median 324k. Among the last of
+them, the shortest document, 1,703 words, cost 392k, and one review of a batch's five documents
+together, 6,369 words, cost 396k. That review raised 6 findings across the five, where a single
+review raises a median of 5, so the items with the most room for a defect, XL or high risk, keep a
+review of their own (`research/review-cost-2026-10-04.md`).
 
 ## 7. End of a batch
 
@@ -643,7 +668,7 @@ pass found two hangs that no check could see.
 Parts of this process rely on tools that don't exist yet:
 - **dod:**
   - `batches` and `batch` as names for its `phases` and `phase`;
-  - status derived from git;
+  - status derived from git, from the `Done:` trailers and the branches;
   - the plan read from main instead of from a checkout;
   - your items shown as waiting for you;
   - adding a project in one step. Today a project is added by hand to dod's PDD provider config.
