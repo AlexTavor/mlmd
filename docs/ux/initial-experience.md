@@ -59,8 +59,7 @@ equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and
 - Teams notify each other of new joiners and updates through GitHub, not through mlmd.
   (Frank, 2026-10-05)
 - The process.md changes this implies (mlmd.md, code-and-spec-first in mlmd, one-at-a-time
-  questions with topic summaries) are Frank's to make as owner of usability, agreed with Alex,
-  per Frank. (Frank, 2026-10-05)
+  questions with topic summaries) are made jointly: Alex and Frank own the process together (D-16). (Frank, 2026-10-05)
 
 ## Open questions
 - None for this journey.

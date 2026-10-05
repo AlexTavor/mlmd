@@ -5,8 +5,8 @@ Claude Code plugin that runs the process for you.
 
 It's for developers who know how to build software but haven't built much with an agent. It
 leaves out the engineering you already know, and covers what changes when an agent writes the
-code. It's for building something new. To change an existing codebase you didn't write, see
-[Proof-Driven Development](https://github.com/AlexTavor/proof-driven-development).
+code. It's for building something new, from an idea or a law, or from existing code and specs whose
+business meaning mlmd writes into its documents first.
 
 > **Status:** the process is a working draft ([process.md](process.md)). The plugin isn't built
 > yet, so the commands below describe how it will work. Until it exists, you can follow the

@@ -31,7 +31,18 @@ Tooling this process needs).
   installs nothing that needs admin rights or runs at login. For those it shows you the command.
 - **Start, once per project:** in an empty folder, `/mlmd:start`. It sets up the repository, the
   documents, the plan, CLAUDE.md with every trust box checked, the permission rules and the hooks,
-  adds the project to dod, and begins the Vision interview.
+  adds the project to dod, and begins the Vision interview. Instead of the commands, you can attach
+  `mlmd.md` to a prompt: it installs the plugin and starts the same way. mlmd asks for the folder
+  (an empty one or an existing repository; it runs `git init` if needed), then which start applies:
+  - **idea or law first:** the Vision interview;
+  - **code and specs first:** mlmd reads the code and specs, lists the documents it will fill and
+    why, writes the business meaning it finds into them, then asks only about gaps and
+    contradictions;
+  - **joining a running project:** mlmd asks your role, records it in the register, shows where the
+    project stands and why, and asks you any questions marked for your role. Your GitHub access
+    sets what you can push. Teams tell each other about joiners through GitHub.
+
+  Before the first question, one screen shows the phases, where you are, and why this phase exists.
 - **The loop:** every session opens with a status line: what's done, what's ready, what waits for
   you, and the plan view's address. Then either:
   - start a new worktree session: the desktop app's worktree option, or `claude --worktree`. mlmd
@@ -423,11 +434,13 @@ Phase 1 covers the whole product first (1a), then one MVP (1b). Each later MVP s
     gates.
 
   `/mlmd:start` does all of this.
-- **Ask:** "Interview me about the whole product until you can write vision.md. Ask numbered
-  questions, a few per round. Mark every decision you write with who made it and when: me, or you
+- **Ask:** "Interview me about the whole product until you can write vision.md. Ask one question
+  at a time with a progress count, or numbered questions a few per round if I ask for that. At the
+  end of each topic, summarize what was written to which document and section, and who decided. Mark every decision you write with who made it and when: me, or you
   so work could continue. Add each term to the glossary as it comes up. Anything not decided goes
   into open-questions.md with its level, never into the documents as settled."
-- **The interview:** answer by number. Say "explain" when a question is unclear. When you and the
+- **The interview:** answer, or by number in rounds. You can stop after any answer: the next
+  session's status line shows where the interview stands and continues there. Say "explain" when a question is unclear. When you and the
   agent use a word differently, settle it in the glossary before going on.
 - **Cheapest prototype (optional):** some large questions can only be answered by trying something:
   whether it's fun, whether an interaction feels right, whether the output is useful. For each such
