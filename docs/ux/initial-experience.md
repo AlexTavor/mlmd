@@ -27,12 +27,19 @@ equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and
   opening it in Claude Code explains the rest (BR-29). (Frank, 2026-10-05)
 - A mid-process joiner gets the repo link plus "open the desktop app in this folder". (Frank, 2026-10-05)
 
-### 2. Install
-### 3. Start
+### 2. Install and 3. Start (desktop, Windows)
+- The user attaches `mlmd.md` to a prompt; the plugin installs itself. mlmd asks for an empty
+  folder or an existing repo and runs `git init` itself if needed, so the session works in the
+  project folder and one-click cards can appear. (Frank, 2026-10-05)
+- mlmd asks which entry applies: 1 Idea or law, 2 Code and specs, 3 Joining. (Frank, 2026-10-05)
+- Before the first question: one screen with the phases, where the user is, and one line on why
+  this phase exists (BR-29). (Frank, 2026-10-05)
+- A joiner is asked their role on first start and mlmd records it in the register; the technical
+  expert can review it later. (Frank, 2026-10-05)
+
 ### 4. First questions
 ### 5. First output
 ### 6. Next session
 
 ## Open questions
-- How does a mid-process joiner's role get into the register: self-declared on first start, or
-  added by the technical expert?
+- How does the technical expert hear of a self-registered joiner to review them?
