@@ -54,6 +54,8 @@ equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and
 ## Decisions on joiners
 - A joiner's self-registered role counts immediately; no review step. Their GitHub push access
   bounds what they can do. (Frank, 2026-10-05; proposal P6 rejected)
+- The technical expert may mark questions for a specific role; a joiner with that role is asked
+  those. Otherwise a joiner gets the same overview and summaries as everyone. (Frank, 2026-10-05)
 - Teams notify each other of new joiners and updates through GitHub, not through mlmd.
   (Frank, 2026-10-05)
 - The process.md changes this implies (mlmd.md, code-and-spec-first in mlmd, one-at-a-time
@@ -61,5 +63,4 @@ equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and
   per Frank. (Frank, 2026-10-05)
 
 ## Open questions
-- Which role-specific prompts do Business Analysts and Uitvoering get when they join? (Frank:
-  "might", not yet decided)
+- None for this journey.
