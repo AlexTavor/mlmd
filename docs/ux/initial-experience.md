@@ -38,8 +38,20 @@ equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and
   expert can review it later. (Frank, 2026-10-05)
 
 ### 4. First questions
+- Default: one question at a time with a progress count; the user may ask for numbered batches
+  instead. (Frank, 2026-10-05)
+- Code and spec first: mlmd reads the code and specs, lists the documents it will fill and why,
+  then asks only about gaps and contradictions. (Frank, 2026-10-05)
+
 ### 5. First output
+- Processing is shown as a summary at the end of each topic: what was written to which document
+  and section, and who decided it. (Frank, 2026-10-05)
+
 ### 6. Next session
+- A session can stop after any answer. The next session opens with a status line (phase, progress,
+  next question) and continues there (BR-26). (Frank, 2026-10-05)
 
 ## Open questions
+- P6 (proposed, awaiting Frank): BR-10 addition, a self-registered joiner's role counts for approvals only after the technical expert reviews it.
+- Does a joiner (BA, Uitvoering) also get the per-topic summary, or something lighter?
 - How does the technical expert hear of a self-registered joiner to review them?
