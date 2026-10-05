@@ -69,14 +69,15 @@ Tooling this process needs).
 
 ## 0. Sessions
 
-Keep each session small: one topic, then move on. A topic is a section of a document being filled
-(in 1a: problem, users and core; features and MVPs; constraints; what to keep possible; standing
-documents), a spike, a work item or a review. A phase is a run of topics. A session ends by writing
+Keep each session small, and slide from topic to topic. A topic is a section of a document being
+filled (in 1a: problem, users and core; features and MVPs; constraints; what to keep possible;
+standing documents), a spike, a work item or a review. A session moves on to a new session when
+its context grows too large for you to keep in mind, or for a deep dive. A session ends by writing
 its output files and committing them. The next session starts by reading only those files, not the
 previous conversation. Too much in one session is lost to every later one, and fills both your
 context and the agent's.
 
-At the end of each topic, mlmd offers the next session as a card in the desktop app (in the CLI it
+When a session moves on, mlmd offers the next session as a card in the desktop app (in the CLI it
 names the command), with that session's first prompt filled in. One click starts it. The new
 session starts from committed work only, so mlmd commits before it offers the card.
 
