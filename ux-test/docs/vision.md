@@ -28,6 +28,9 @@ An AI Magic: The Gathering judge in Discord that answers rules questions, rules 
 | Photo, then webcam input | none yet (Frank, 2026-10-05) |
 | Limited formats | none yet (Frank, 2026-10-05) |
 | Portuguese Multiplayer Addendum | none yet (OQ-37, Frank 2026-09-28) |
+| Event policies set by the TO (FR-CTX-5) | none yet (Frank, 2026-10-05) |
+| Small in-person events | none yet (Frank, 2026-10-05) |
+| More channels: WhatsApp, web | none yet (Frank, 2026-10-05) |
 
 The PRD's rough order for the "none yet" features is kept as a note: the order above. (PRD §4)
 
@@ -46,6 +49,7 @@ The PRD's rough order for the "none yet" features is kept as a note: the order a
 | Other formats, RELs, frameworks, front ends, input types | All pluggable; no hard-coded player count, English, Discord or text-only pipeline (NFR-EXT-1, PRD §4) |
 | More channels: WhatsApp, web | Front end behind a port (D31) |
 | Photo, video, live-stream evidence | Non-text input path (D31) |
-| On-device or hybrid mobile app | Rules data shippable to a device (D31) |
+| Phone app running on-device or hybrid | Rules data shippable to a device (D31) |
+| Penalty history across an event | A stable per-event player identity, kept apart from the pseudonymised text; retention set per event, not fixed at 7 days (Frank, 2026-10-05; review V5) |
 
 Not kept possible: scaling to millions of users. The MVP's Discord bot doesn't scale that far and the architecture may rule it out. (Frank, 2026-10-05; narrows D31)

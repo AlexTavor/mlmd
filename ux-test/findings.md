@@ -26,3 +26,11 @@ Tester: Frank Verbruggen (technical expert), Windows 10, Claude Code desktop app
 7. Reading without progress: fine; show something if it takes longer than 20–30 seconds.
 8. Orientation before the setup question: loved it as is.
 9. One question at a time with options: loved it.
+
+## Session 2: 1a design-review and 1b (2026-10-05)
+
+| Date | Step | Source | Finding |
+| --- | --- | --- | --- |
+| 2026-10-05 | 1 (status line) | agent | §6 defines the status line as "phase, progress, next question", but a review has no question queued yet and no measurable progress until its findings exist. The line had to say "review not started; 0 of ? findings". The design needs a status form for non-interview steps. |
+| 2026-10-05 | 2 (review) | agent | "Fresh session" plus "read only the committed files" isn't enough for an imported vision: the review could only find V1 and V5 by re-reading the PRD (about 66 KB). The rule that the next session reads only output files conflicts with reviewing an import against its source. |
+| 2026-10-05 | 2 (review) | agent | process.md doesn't say how review findings are settled with the user. This run asks one finding at a time, like gap questions, and records them in ux-test/docs/review-vision.md. |
