@@ -35,9 +35,15 @@ Tooling this process needs).
   `mlmd.md` to a prompt: it installs the plugin and starts the same way. mlmd asks for the folder
   (an empty one or an existing repository; it runs `git init` if needed), then which start applies:
   - **idea or law first:** the Vision interview;
-  - **code and specs first:** mlmd reads the code and specs, lists the documents it will fill and
-    why, writes the business meaning it finds into them, then asks only about gaps and
-    contradictions;
+  - **code and specs first:** mlmd asks which code and specs to read, and lets you pick from the
+    candidates it finds when it isn't sure which you mean. It reads them, showing progress if that
+    takes more than about 20 seconds, lists the documents it will fill and why, writes what the
+    sources mean into them, then asks only about gaps and contradictions. It runs you through every
+    phase from 1a, however far the existing project got: each phase is filled from what exists and
+    asks only what is missing. Its topics are the sections of the documents the phase fills, in
+    order; a topic with nothing to ask still gets its summary. Each topic's summary lists what was
+    decided today, what changed from the sources, and what was imported unchanged. From then on
+    mlmd's documents are the only master copy; the sources are inputs and are not kept in sync;
   - **joining a running project:** mlmd asks your role, records it in the register, shows where the
     project stands and why, and asks you any questions marked for your role. Your GitHub access
     sets what you can push. Teams tell each other about joiners through GitHub.
