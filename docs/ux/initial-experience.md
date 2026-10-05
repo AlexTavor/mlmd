@@ -3,6 +3,13 @@
 From hearing of mlmd until the first phase (1a, the Vision interview, or its code-and-spec-first
 equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and web follow later.
 
+## Master rule: small, sliding contexts
+
+The user's context and the model's stay small. Each session holds one topic; at its end mlmd
+commits the documents and offers the next session as a card (one click). A deep dive is a detour
+in its own sessions; mlmd keeps the path, shows it in the status line, and brings the user back to
+where they left. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18)
+
 ## Users
 
 - **Technical expert** (required): programming experience and a good understanding of AI. Starts the

@@ -69,13 +69,22 @@ Tooling this process needs).
 
 ## 0. Sessions
 
-Each phase runs in its own session, and so does each spike and each work item. A session ends by
-writing its output files. The next session starts by reading only those files, not the previous
-conversation.
+Keep each session small: one topic, then move on. A topic is a section of a document being filled
+(in 1a: problem, users and core; features and MVPs; constraints; what to keep possible; standing
+documents), a spike, a work item or a review. A phase is a run of topics. A session ends by writing
+its output files and committing them. The next session starts by reading only those files, not the
+previous conversation. Too much in one session is lost to every later one, and fills both your
+context and the agent's.
 
-Start a new session when the phase changes, or when a spike, a work item or a review finishes.
-Don't carry one conversation across phases: whatever it holds that isn't in a file is lost to every
-later session.
+At the end of each topic, mlmd offers the next session as a card in the desktop app (in the CLI it
+names the command), with that session's first prompt filled in. One click starts it. The new
+session starts from committed work only, so mlmd commits before it offers the card.
+
+A deep dive, such as a spike, a prototype, or going deeper into one part, is a detour that gets
+its own sessions. mlmd keeps the path as a stack in the plan, for example
+`1a › constraints › deep dive: retention`, and each status line shows it. When the deep dive ends,
+the next card returns you to the step you left, at the question where you stopped. Deep dives can
+nest.
 
 A session works in the worktree of the item it is on (see Git), and starts with the plan view open
 (see The plan).
