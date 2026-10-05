@@ -35,7 +35,7 @@ the runs took, not their floor.
 goals, the tutorial's lessons and arrow, the sound's button and voices, their specs, and documents.
 None is under `game/`, the simulation, which holds 287 of the 604 mutants. Of the 604 mutants, 135 sit
 on a changed file or on a module whose own spec changed (`mutantsChanged` in `tools/mutants.ts`, on
-plague's branch `mutation-scope`), across 19 behaviors; 66 are the batch's own behaviors.
+plague's main since `99fe0ec`), across 19 behaviors; 66 are the batch's own behaviors.
 
 So the second run judged 469 mutants on files, and modules with specs, no one had changed since the
 first run caught them. It found nothing new: a mutant's verdict moves only when its code or the
