@@ -9,7 +9,9 @@ The user's context and the model's stay small. A session slides from topic to to
 context grows too large for the user to keep in mind, mlmd commits the documents and offers the
 next session as a card (one click). A deep dive is a detour
 in its own sessions; mlmd keeps the path, shows it in the status line, and brings the user back to
-where they left. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18)
+where they left. At 100K tokens over the session's start
+mlmd suggests a new session; at 500K it urges one and helps split the work; if ignored, it explains
+what large contexts cost. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18, D-19)
 
 ## Users
 
