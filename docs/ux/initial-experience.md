@@ -42,6 +42,24 @@ equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and
   instead. (Frank, 2026-10-05)
 - Code and spec first: mlmd reads the code and specs, lists the documents it will fill and why,
   then asks only about gaps and contradictions. (Frank, 2026-10-05)
+- Code and spec first, after the first UX test (`ux-test/findings.md`):
+  - if mlmd isn't sure which sources the user means, it shows the candidates and the user picks;
+  - it shows progress when reading takes more than about 20 seconds;
+  - it writes what the sources mean, then asks about gaps: the process is iterative, and for an
+    existing system interpreting first is right ("write what users mean");
+  - it runs the user through every phase from 1a, even when the project is further along, since
+    mlmd targets enterprise applications;
+  - topics are the sections of the documents the phase fills, in the order it builds them (for 1a:
+    problem, users and core; features and MVPs; constraints; what to keep possible; standing
+    documents). Each gap question belongs to its section's topic. The count is per topic and
+    overall ("constraints, 1 of 2; question 4 of 5"). A topic with no gaps gets a one-line summary;
+  - once imported, mlmd's documents are the only master copy.
+  (Frank, 2026-10-05, agreed with Alex)
+
+### 5a. Summary after an import
+- Three parts: **decided today** (decision, document and section, who); **changed from your
+  source** (superseded, narrowed or reopened); **imported unchanged** (one line per document with
+  counts and source, no content repeated). (Frank, 2026-10-05, agreed with Alex)
 
 ### 5. First output
 - Processing is shown as a summary at the end of each topic: what was written to which document
