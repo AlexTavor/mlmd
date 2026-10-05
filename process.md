@@ -77,6 +77,15 @@ its output files and committing them. The next session starts by reading only th
 previous conversation. Too much in one session is lost to every later one, and fills both your
 context and the agent's.
 
+mlmd watches the session's context size:
+- **100K tokens more than it started with:** mlmd suggests a new session, for efficiency. If you
+  agree, it wraps up with you, commits, and offers the next session.
+- **500K tokens:** mlmd urges you more strongly to continue in a new session, and offers to help
+  split the remaining work into sessions.
+- **Suggestions ignored:** mlmd explains what a very large context costs: every prompt resends the
+  whole context, so each one costs more and takes longer, and the model keeps track of early
+  details less well.
+
 When a session moves on, mlmd offers the next session as a card in the desktop app (in the CLI it
 names the command), with that session's first prompt filled in. One click starts it. The new
 session starts from committed work only, so mlmd commits before it offers the card.
