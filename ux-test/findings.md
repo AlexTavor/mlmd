@@ -41,3 +41,13 @@ Tester: Frank Verbruggen (technical expert), Windows 10, Claude Code desktop app
 | 2026-10-06 | 1b, question 3 | agent | Frank's answer ("unresolved only on infractions or illegal board states") raised a new contradiction with FR-Q-6, so "3 of 3" became "4 of 4". The count in the design promises a fixed total, but follow-up questions can add to it. The design should say how a count grows, for example "question 4 of 4 (1 added)". |
 | 2026-10-06 | sliding context | agent | The new-session suggestion came at a topic boundary, not at the +100K threshold: the next topic (writing ~45 behaviors) is large and would build on a context already holding the full PRD. D-19 defines only token thresholds. A suggestion "before a large topic" would be useful too. In the desktop app mlmd can't create a card by hand, so the test shows the first prompt as text. |
 | 2026-10-06 | 5a summary | agent | Two decisions were mlmd's own ("so work could continue"). The §5a "decided today" table has a "who" column, but nothing tells the user to check mlmd's decisions. This run marks them "please check" in the summary. process.md says "Read every decision marked as the agent's", but the summary is the only place the user sees them. |
+
+## Frank's responses to session 2 (2026-10-06, out of role)
+
+1. Scope: "I do not want the MVP to be small, I want my sessions making it to be small." Building the MVP is a series of sliding context windows, each one small. He's very happy with the new-session suggestion at the end of the 1b interview.
+2. Order conflict in 1b: report to Alex when he starts. **For Alex:** in the code-and-specs start, "write what the sources mean, then ask gaps" conflicts with 1b, where the scope gap decides which behaviors get written. Proposal: ask scope gaps before writing.
+3. Reviewing an import: reading the existing documents is always allowed when needed, and only then.
+4. mlmd's own decisions, after explanation: option 1. Each topic summary ends with a separate block, "mlmd decided, please confirm", one numbered line each; the user replies "ok" or e.g. "2: no".
+5. Status line for a review, after explanation: fine. "When talking in a normal interaction, I don't need to know everything in advance." A step without questions names itself as "next".
+6. Growing count: fine as shown ("4 of 4 (1 added)").
+7. Cards: mlmd can make a card in the desktop app (it has done so before). Finding withdrawn: use the card.
