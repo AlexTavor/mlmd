@@ -19,6 +19,8 @@ Next session: one behavior per PRD §6 requirement with contract, Failure and Ed
 | *Unresolved* arises only for infractions and for fixing an illegal game state; the rules always settle a pure rules question. Play at home is JAR only; everywhere else a judge is available. | Frank, 2026-10-06 |
 | A library miss whose AI answer the verifier can't confirm is not *unresolved*: the bot says it can't give a verified answer yet, hands off to the judge-only channel in a tournament or suggests a human judge elsewhere, and logs a library miss. It doesn't count as an incorrect ruling. Replaces FR-Q-6's "unresolved and escalated". | Frank, 2026-10-06 |
 
-## mlmd decided, please confirm (from session 2)
-1. An *unresolved* result or a handoff is not an incorrect ruling for the verdict.
-2. FR-CTX-2's 1v1 fallback is left out of MVP 1 (1v1 is "none yet").
+## Confirmed mlmd decisions
+| Decision | Who, when |
+| --- | --- |
+| An *unresolved* result or a handoff is not an incorrect ruling for the verdict. | mlmd, confirmed by Frank 2026-10-06 |
+| FR-CTX-2's 1v1 fallback is left out of MVP 1 (1v1 is "none yet"). | mlmd, confirmed by Frank 2026-10-06 |

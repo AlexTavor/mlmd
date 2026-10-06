@@ -78,6 +78,9 @@ what large contexts cost. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18, D-1
 ### 6. Next session
 - A session can stop after any answer. The next session opens with a status line (phase, progress,
   next question) and continues there (BR-26). (Frank, 2026-10-05)
+- Every session opens with its goal in one or two sentences (what it will achieve and why now),
+  then the status line, then the first question. It doesn't list the outputs or what it needs from
+  the user; those follow from the conversation. (Frank, 2026-10-06; UX test session 3)
 
 ## Decisions on joiners
 - A joiner's self-registered role counts immediately; no review step. Their GitHub push access

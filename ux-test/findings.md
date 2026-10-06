@@ -52,3 +52,13 @@ Tester: Frank Verbruggen (technical expert), Windows 10, Claude Code desktop app
 6. Growing count: fine as shown ("4 of 4 (1 added)").
 7. Cards: mlmd can make a card in the desktop app (it has done so before). Finding withdrawn: use the card.
 | 2026-10-06 | session end | Frank | "Always finish a session with a commit & merge before proceeding." The design says a session ends by committing; Frank wants it merged too, so the next session (a new worktree) starts from main. The session-2 card first asked the new session to merge this branch itself, which is the friction this rule removes. |
+
+## Session 3: 1b behaviors (2026-10-06)
+
+| Date | Step | Source | Finding |
+| --- | --- | --- | --- |
+| 2026-10-06 | 1–2 (opening) | Frank | The session opened with the status line and a confirmation request, but never said what the session will achieve. "I need to understand what we are going to achieve in order to be a good user." The status line's "next" names the next step, not the session's goal. Proposal: every session opens with one or two sentences on its goal and what the user will have at the end, before the first question. |
+
+## Frank's responses to session 3 (2026-10-06, out of role)
+
+1. Session goal: a session opens with its goal (one or two sentences), then the status line, then the first question. Naming the outputs and what mlmd needs from the user is overcompensating; those follow from the conversation. Added to docs/ux/initial-experience.md §6.
