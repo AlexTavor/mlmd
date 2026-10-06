@@ -14,8 +14,8 @@ mlmd suggests a new session; at 500K it urges one and helps split the work; if i
 what large contexts cost. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18, D-19)
 
 The sliding happens within a phase. A session never crosses into the next phase: each phase starts in
-a new session, even when the context is still small. (Alex, 2026-10-06; BR-22, D-21; pending Frank's
-confirmation)
+a new session, even when the context is still small. (Alex, 2026-10-06, confirmed by Frank; BR-22,
+D-21)
 
 ## Users
 
