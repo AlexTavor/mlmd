@@ -51,3 +51,4 @@ Tester: Frank Verbruggen (technical expert), Windows 10, Claude Code desktop app
 5. Status line for a review, after explanation: fine. "When talking in a normal interaction, I don't need to know everything in advance." A step without questions names itself as "next".
 6. Growing count: fine as shown ("4 of 4 (1 added)").
 7. Cards: mlmd can make a card in the desktop app (it has done so before). Finding withdrawn: use the card.
+| 2026-10-06 | session end | Frank | "Always finish a session with a commit & merge before proceeding." The design says a session ends by committing; Frank wants it merged too, so the next session (a new worktree) starts from main. The session-2 card first asked the new session to merge this branch itself, which is the friction this rule removes. |
