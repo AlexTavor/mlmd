@@ -69,10 +69,14 @@ Tooling this process needs).
 
 ## 0. Sessions
 
-Keep each session small, and slide from topic to topic. A topic is a section of a document being
-filled (in 1a: problem, users and core; features and MVPs; constraints; what to keep possible;
-standing documents), a spike, a work item or a review. A session moves on to a new session when
-its context grows too large for you to keep in mind, or for a deep dive. A session ends by writing
+Keep each session small, and slide from topic to topic within a phase. A topic is a section of a
+document being filled (in 1a: problem, users and core; features and MVPs; constraints; what to keep
+possible; standing documents), a spike, a work item or a review. A session never crosses into the
+next phase: when a phase ends, the next one starts in a new session, even if the context is still
+small. The phase's approval, commit and merge happen at that boundary, so the next phase starts from
+the approved documents alone. The review of a phase's documents, in a fresh session, belongs to the
+phase it checks. Within a phase, a session moves on to a new session when its context grows too
+large for you to keep in mind, or for a deep dive. A session ends by writing
 its output files and committing them. The next session starts by reading only those files, not the
 previous conversation. Too much in one session is lost to every later one, and fills both your
 context and the agent's.
