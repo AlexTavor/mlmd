@@ -13,6 +13,10 @@ where they left. At 100K tokens over the session's start
 mlmd suggests a new session; at 500K it urges one and helps split the work; if ignored, it explains
 what large contexts cost. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18, D-19)
 
+The sliding happens within a phase. A session never crosses into the next phase: each phase starts in
+a new session, even when the context is still small. (Alex, 2026-10-06, confirmed by Frank; BR-22,
+D-21)
+
 ## Users
 
 - **Technical expert** (required): programming experience and a good understanding of AI. Starts the
