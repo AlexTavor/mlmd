@@ -93,6 +93,14 @@ D-21)
 - Every session opens with its goal in one or two sentences (what it will achieve and why now),
   then the status line, then the first question. It doesn't list the outputs or what it needs from
   the user; those follow from the conversation. (Frank, 2026-10-06; UX test session 3)
+- Overview, so the user never feels lost (Frank, 2026-10-07; UX test):
+  - the status line has two lines: the phase map (`1a ✓ › 1b ● › 2 Architecture › …`) and the
+    current phase's topics with counts, ending with "your focus: …". The user can ask "where are
+    we?" for it any time;
+  - in the desktop app, a pinned overview artifact: "your focus now" first (open questions,
+    decisions to confirm, the next session), then the phase strip, then the current phase's topics.
+    mlmd republishes it at each commit and shows when it was updated. In the CLI, `/mlmd:status`
+    shows the same.
 
 ## Decisions on joiners
 - A joiner's self-registered role counts immediately; no review step. Their GitHub push access

@@ -49,8 +49,11 @@ Tooling this process needs).
     sets what you can push. Teams tell each other about joiners through GitHub.
 
   Before the first question, one screen shows the phases, where you are, and why this phase exists.
-- **The loop:** every session opens with a status line: what's done, what's ready, what waits for
-  you, and the plan view's address. Then either:
+- **Overview:** in the desktop app mlmd keeps a pinned overview page, republished at each commit:
+  what needs your attention first, then every phase with where you are, then the current phase's
+  topics. In the CLI, `/mlmd:status` shows the same.
+- **The loop:** every session opens with its goal and a status line: what's done, what's ready, what
+  waits for you, and the plan view's address. Then either:
   - start a new worktree session: the desktop app's worktree option, or `claude --worktree`. mlmd
     gives it the next ready item, the session names the item, and you say go; or
   - in a session in the project folder, `/clear`, then `/mlmd:next`.

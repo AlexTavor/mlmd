@@ -47,3 +47,4 @@ first behaviors gap question (Frank, 2026-10-07).
 - B1, B2, B4, B5, B6, B7, B8: agreed, written into process.md (§0, 1a, 1b) and initial-experience.md (§4, §5, §5a). B3: no need, dropped.
 - C2, C3, C4, C5: agreed and written. C3 goes in process.md 1a Review.
 - C1: the standing-documents gate is written into 1a "Done when". Frank widened it: "As a user, I want to know what I need to focus my attention on next and might want to have some overview of what my entire process looks like. Not having any overview on this makes me feel lost." The overview's form is open.
+- C1 overview: option 3 (Frank, 2026-10-07): a two-line status (phase map, current topics with "your focus") plus a pinned overview artifact republished at each commit; `/mlmd:status` in the CLI. Written into initial-experience §6 and process.md Using mlmd.
