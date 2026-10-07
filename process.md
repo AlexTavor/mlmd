@@ -76,14 +76,17 @@ next phase: when a phase ends, the next one starts in a new session, even if the
 small. The phase's approval, commit and merge happen at that boundary, so the next phase starts from
 the approved documents alone. The review of a phase's documents, in a fresh session, belongs to the
 phase it checks. Within a phase, a session moves on to a new session when its context grows too
-large for you to keep in mind, or for a deep dive. A session ends by writing
-its output files and committing them. The next session starts by reading only those files, not the
+large for you to keep in mind, before a large new topic, or for a deep dive. A session ends by
+writing its output files, committing them and merging them into main, so the next session starts
+from main. The next session starts by reading only those files, not the
 previous conversation. Too much in one session is lost to every later one, and fills both your
 context and the agent's.
 
 mlmd watches the session's context size:
 - **100K tokens more than it started with:** mlmd suggests a new session, for efficiency. If you
-  agree, it wraps up with you, commits, and offers the next session.
+  agree, it wraps up with you, commits, merges into main, and offers the next session.
+- **Before a large new topic:** mlmd suggests a new session even below 100K tokens, so the topic
+  doesn't build on a context full of the previous one.
 - **500K tokens:** mlmd urges you more strongly to continue in a new session, and offers to help
   split the remaining work into sessions.
 - **Suggestions ignored:** mlmd explains what a very large context costs: every prompt resends the
@@ -485,13 +488,21 @@ Phase 1 covers the whole product first (1a), then one MVP (1b). Each later MVP s
   - a belief the product depends on that nobody chose. Each one goes into assumptions.md;
   - a large question about a later feature that is neither answered nor listed among what the
     architecture must keep possible.
-- **You:** answer, decide, reject. Read every decision marked as the agent's.
+
+  The review reads the documents under review; it reads the sources (an imported PRD, for example)
+  only when a check needs them. Its findings are settled like gap questions, one at a time, and
+  recorded with their status in `docs/reviews/<document>.md`.
+- **You:** answer, decide, reject. Read every decision marked as the agent's: each topic summary
+  ends with a block "mlmd decided, please confirm", one numbered line each, and you reply "ok" or,
+  for example, "2: no".
 - **Done when:**
   - every feature is marked with its MVP, or with none yet;
   - every large question about a later feature is answered, or listed in the Vision among what the
     architecture must keep possible;
   - every decision is marked with who made it;
-  - the review's findings are settled.
+  - the review's findings are settled;
+  - the standing documents exist in the form described under Standing documents, and you have seen
+    each one's summary. The standing-documents topic is never skipped, also not on an import.
 - **Outputs:** the project's repository, the plan shown in dod, vision.md, and the standing
   documents.
 
@@ -499,9 +510,12 @@ Phase 1 covers the whole product first (1a), then one MVP (1b). Each later MVP s
 
 - **Ask:** "Take these features from the Vision for MVP N. Write their behaviors into behaviors.md,
   and the PRD for this MVP. Interview me about anything not settled."
-- **Keep it small:** expect to push for this. The agent grows scope by default. Ask for the
-  smallest set of features that shows what this MVP is for. Everything else stays in the Vision
-  for a later MVP.
+- **Keep it small:** the sessions, not the MVP. The MVP is a full product for what it is for. Push
+  back on features that don't serve that purpose; everything else stays in the Vision for a later
+  MVP. Overview comes from splitting the work into phase 4's batches and into small sessions, not
+  into smaller MVPs.
+- **Scope first:** a gap that decides which behaviors get written at all (what the MVP is for, what
+  it leaves out) is asked before writing. Other gaps are asked after.
 - A cheapest prototype (see 1a) can answer a large question here too.
 - **Review:** design-review of the PRD and the behaviors it adds or changes, in a fresh session,
   looking for:

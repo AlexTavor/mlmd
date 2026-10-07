@@ -40,3 +40,10 @@ first behaviors gap question (Frank, 2026-10-07).
 | C3 | Review findings had no defined way to be settled. | Settle like gap questions: one at a time, recorded in `docs/reviews/<doc>.md` with status. | session 2, agent |
 | C4 | A dependency on a later phase (spike S1, voice) has no place in an earlier one. | Mark it "depends on spike S1" in the Vision's feature line and in open-questions.md "needed by". | session 2, agent |
 | C5 | A gap question explained the conflict but not what the answer changes. | Each question ends with one line: what the answer decides. (Frank found the full intro overcompensating; this one is per question, not per session.) | session 3, agent |
+
+## Frank's decisions (2026-10-07)
+
+- A: ok.
+- B1, B2, B4, B5, B6, B7, B8: agreed, written into process.md (§0, 1a, 1b) and initial-experience.md (§4, §5, §5a). B3: no need, dropped.
+- C2, C3, C4, C5: agreed and written. C3 goes in process.md 1a Review.
+- C1: the standing-documents gate is written into 1a "Done when". Frank widened it: "As a user, I want to know what I need to focus my attention on next and might want to have some overview of what my entire process looks like. Not having any overview on this makes me feel lost." The overview's form is open.

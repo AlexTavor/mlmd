@@ -67,17 +67,25 @@ D-21)
     problem, users and core; features and MVPs; constraints; what to keep possible; standing
     documents). Each gap question belongs to its section's topic. The count is per topic and
     overall ("constraints, 1 of 2; question 4 of 5"). A topic with no gaps gets a one-line summary;
+  - a gap that decides what gets written at all (scope) is asked before writing;
   - once imported, mlmd's documents are the only master copy.
   (Frank, 2026-10-05, agreed with Alex)
+- A count that grows with a follow-up question says so: "question 4 of 4 (1 added)". (Frank, 2026-10-07; UX test)
+- Each question ends with one line saying what the answer decides. (Frank, 2026-10-07; UX test)
 
 ### 5a. Summary after an import
 - Three parts: **decided today** (decision, document and section, who); **changed from your
   source** (superseded, narrowed or reopened); **imported unchanged** (one line per document with
   counts and source, no content repeated). (Frank, 2026-10-05, agreed with Alex)
+- Before the summary, mlmd checks each "imported unchanged" count against the file it wrote. (Frank, 2026-10-07; UX test)
 
 ### 5. First output
 - Processing is shown as a summary at the end of each topic: what was written to which document
   and section, and who decided it. (Frank, 2026-10-05)
+- Every summary ends with a separate block, "mlmd decided, please confirm": one numbered line per
+  decision mlmd made itself. The user replies "ok" or, for example, "2: no". (Frank, 2026-10-06)
+- A feature that depends on a later phase (a spike, for example) is marked so in the Vision's
+  feature line and under "needed by" in open-questions.md. (Frank, 2026-10-07; UX test)
 
 ### 6. Next session
 - A session can stop after any answer. The next session opens with a status line (phase, progress,
