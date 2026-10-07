@@ -38,7 +38,7 @@ first behaviors gap question (Frank, 2026-10-07).
 | C1 | The standing documents were imported silently and never shown; 1b started without them. The 1a topic list names "standing documents", but 1a's "Done when" doesn't check them. | 1a "Done when" adds: "the standing documents exist in the form above, and the user has seen each one's summary". The standing-documents topic is never skipped, even on an import. | session 3, Frank |
 | C2 | An import summary's "imported unchanged" was false: glossary.md claimed 26 terms but held 4. | Before a summary, mlmd checks each "imported unchanged" count against the written file. | session 3, agent |
 | C3 | Review findings had no defined way to be settled. | Settle like gap questions: one at a time, recorded in `docs/reviews/<doc>.md` with status. | session 2, agent |
-| C4 | A dependency on a later phase (spike S1, voice) has no place in an earlier one. | Mark it "depends on spike S1" in the Vision's feature line and in open-questions.md "needed by". | session 2, agent |
+| C4 | A dependency on a later phase (a feature waiting on a spike) has no place in an earlier one. | Mark it "depends on spike <n>" in the Vision's feature line and in open-questions.md "needed by". | session 2, agent |
 | C5 | A gap question explained the conflict but not what the answer changes. | Each question ends with one line: what the answer decides. (Frank found the full intro overcompensating; this one is per question, not per session.) | session 3, agent |
 
 ## Frank's decisions (2026-10-07)

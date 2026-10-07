@@ -20,7 +20,7 @@ description, the new session's first prompt and, optionally, a folder. The probe
 to report its folder, branch, worktree state and starting commit, and which session-starting tools
 it could see, and to change nothing.
 
-1. **Attempts 1 and 2**, offering session working in another project folder (`mtg-judge`): once
+1. **Attempts 1 and 2**, offering session working in another project folder: once
    with `cwd` set to `claude-boot`, once with no `cwd`. The tool answered that a card was showing
    both times. The operator saw no card, in the chat or in the Tasks pane.
 2. **Attempt 3**, offering session working in `claude-boot` itself, no `cwd`. The card appeared,
