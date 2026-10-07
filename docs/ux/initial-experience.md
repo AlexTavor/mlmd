@@ -69,6 +69,9 @@ D-21)
     overall ("constraints, 1 of 2; question 4 of 5"). A topic with no gaps gets a one-line summary;
   - a gap that decides what gets written at all (scope) is asked before writing;
   - once imported, mlmd's documents are the only master copy.
+  - an import that was started before is resumed, not redone: mlmd detects the documents and
+    decisions already written, shows what is done and where it stopped, and continues from there.
+    Settled questions are never asked again. (Frank, 2026-10-07; UX test)
   (Frank, 2026-10-05, agreed with Alex)
 - A count that grows with a follow-up question says so: "question 4 of 4 (1 added)". (Frank, 2026-10-07; UX test)
 - Each question ends with one line saying what the answer decides. (Frank, 2026-10-07; UX test)
