@@ -19,16 +19,16 @@ For developers who know how to build software and have not built much with an ag
 
   | # | What it's for | Main document | Runs |
   | --- | --- | --- | --- |
-  | [1a](#1a-the-whole-product) | `docs/vision.md` | Decide the whole product: what it is and which MVP each feature belongs to | once |
-  | [1b](#1b-an-mvp) | `docs/prd/mvp-N.md` | Decide one MVP: what it's for and how it behaves | per MVP |
-  | [1.5](#15-refinement) | `docs/open-questions.md` | Settle the questions that change behavior but not structure | per MVP |
-  | [2](#2-architecture-then-stack) | `docs/architecture.md` | Design the architecture, then pick the stack | per MVP |
-  | [3](#3-spikes) | `docs/spikes/<name>.md` | Prove the risky assumptions before building on them | per MVP |
-  | [4](#4-plan-the-build) | `.pdd/plan.json` | Plan the build in batches | per MVP |
-  | [5](#5-batch-design) | `docs/hld/<batch>.md` | Design a batch that changes the architecture | per batch |
-  | [6](#6-work-items) | `docs/lld/W<id>-<name>.md` | Design, build, attack and merge each work item | per batch, item by item |
-  | [7](#7-end-of-a-batch) | `.pdd/plan.json` | Check a batch: mutation testing and a reading pass | per batch |
-  | [8](#8-end-of-an-mvp-and-release) | `docs/prd/mvp-N.md` | Judge the MVP and release it | per MVP |
+  | `docs/vision.md` | [1a](#1a-the-whole-product) | Decide the whole product: what it is and which MVP each feature belongs to | once |
+  | `docs/prd/mvp-N.md` | [1b](#1b-an-mvp) | Decide one MVP: what it's for and how it behaves | per MVP |
+  | `docs/open-questions.md` | [1.5](#15-refinement) | Settle the questions that change behavior but not structure | per MVP |
+  | `docs/architecture.md` | [2](#2-architecture-then-stack) | Design the architecture, then pick the stack | per MVP |
+  | `docs/spikes/<name>.md` | [3](#3-spikes) | Prove the risky assumptions before building on them | per MVP |
+  | `.pdd/plan.json` | [4](#4-plan-the-build) | Plan the build in batches | per MVP |
+  | `docs/hld/<batch>.md` | [5](#5-batch-design) | Design a batch that changes the architecture | per batch |
+  | `docs/lld/W<id>-<name>.md` | [6](#6-work-items) | Design, build, attack and merge each work item | per batch, item by item |
+  | `.pdd/plan.json` | [7](#7-end-of-a-batch) | Check a batch: mutation testing and a reading pass | per batch |
+  | `docs/prd/mvp-N.md` | [8](#8-end-of-an-mvp-and-release) | Judge the MVP and release it | per MVP |
 
   Setting up a project and the rules for how sessions run (see Sessions) are not phases.
 - **MVP:** one increment of the product, with its own PRD and verdict. Each MVP runs phases 1b to 8.
