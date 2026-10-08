@@ -44,8 +44,7 @@ Governs: the cheapest prototypes (`docs/prototypes/<name>.md`, a deep dive from 
 | --- | --- | --- | --- | --- |
 | `docs/hld/<cycle>.md` | 3 | Design a cycle that changes the architecture | architecture.md, the plan | design review settled |
 | `docs/lld/W<id>-<name>.md` | 3 | Design one work item | the HLD if any, behaviors | the cycle's LLDs reviewed together |
-| `docs/lld/W<id>-<name>.md` (again) | 4 | Build, attack and merge the item it designs | the LLD | code merged; attack findings settled, recorded in the LLD |
-| `.pdd/plan.json` (cycle end) | 4 | Check the cycle: mutation testing and a reading pass | the merged code | every survivor and finding closed or turned into a plan item |
+| `docs/cycles/<cycle>.md` | 4 | Build, attack and merge each item, then check the cycle: mutation testing and a reading pass | the cycle's LLDs | every item merged; attack findings, survivors and reading-pass findings settled or turned into plan items |
 | `docs/prd/mvp-N.md` (verdict) | 4 | Judge the MVP and release it | the plan's final item | verdict written; release tagged on the operator's word |
 
 ## Standing documents (every phase; current, never ready)
@@ -60,13 +59,10 @@ A later iteration may go any way a usual feature-changing iteration goes (D-27):
 the Vision, a PRD, behaviors or the architecture, through a change request (BR-18), and continues
 from the earliest document it changes.
 
-## Open points
+## Settled (Frank and Alex, 2026-10-08, D-28)
 
-1. **Phase boundary and sessions.** BR-22: a session never crosses a phase. With four phases, a
-   requirements session could run from vision.md to open-questions.md. Should the boundary be the
-   document instead (a new session per document)? Claude proposes: per document, since that is
-   what D-21's reason (start from approved files alone) protects.
-2. **Where the attack and the cycle check write.** Proposed above: the attack into the item's LLD,
-   the cycle check into the plan. Alternative: a cycle report, `docs/cycles/<cycle>.md`.
-3. **stack.md in phase 2.** The stack is technical, but it is chosen once, before any cycle. Kept
-   in phase 2 here.
+1. A session never crosses a document: each document's work starts in a new session, and a
+   document may take several sessions (BR-38).
+2. The attack, mutation testing and reading pass of a cycle write to a cycle report,
+   `docs/cycles/<cycle>.md`.
+3. `docs/stack.md` stays in phase 2.
