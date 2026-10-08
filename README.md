@@ -29,28 +29,25 @@ business meaning mlmd writes into its documents first.
   every rule says what enforces it.
 - **Tests the agent writes can pass without testing anything.** One set of removal tests passed on
   code that removed nothing. So before a merge, a fresh session attacks the tests ("which wrong
-  implementation passes these?"), and at the end of each batch, mutation testing grades them.
+  implementation passes these?"), and at the end of each cycle, mutation testing grades them.
 
 ## How it works
 
-A project goes through these phases. Each one runs in its own Claude Code session and ends by
-writing its results to files.
+mlmd is one process in four phases. Within each phase the next step is always to work on the
+next document, and each document's work runs in its own Claude Code sessions and ends by writing
+it to the repository.
 
-| Phase | What happens | What you do |
+| Phase | Documents, and what each is for | What you do |
 | --- | --- | --- |
-| 1a | The Vision: the whole product, and which MVP each feature belongs to | Answer the interview, decide |
-| 1b | An MVP: what it's for, its behaviors, and behavior tests in Gherkin | Keep it small |
-| 1.5 | The questions that change behavior but not the architecture | Rule on the defaults |
-| 2 | The architecture, then the stack | Walk each behavior through the architecture |
-| 3 | Spikes for the risky assumptions | Read the verdicts |
-| 4 | The build plan: work items in batches, with their dependencies | Read the plan |
-| 5 | A design for each batch that changes the architecture | Answer its questions |
-| 6 | Each batch's item designs, reviewed together; then each item: code, attack, merge | Approve the stops you kept |
-| 7 | The end of a batch: mutation testing and a reading pass | Use what was built |
-| 8 | The end of an MVP: its verdict, and a release | Give the verdict |
+| 1 Requirements | `vision.md`: decide the whole product: what it is and which MVP each feature belongs to. The MVP's PRD: decide one MVP: what it's for and what result would be a no. `behaviors.md`: state what the product does: contract, failure, edges. The Gherkin features: make each behavior testable. The medium open questions: settle the questions that change behavior but not structure | Answer the interview, decide, rule on the defaults |
+| 2 Functional design and plan | `architecture.md`: divide the product into logical components and walk every behavior through them. `stack.md`: pick what supports the requirements and the architecture. Spikes: prove a risky assumption before anything is built on it. The plan: plan the build: cycles of work items, with their dependencies | Walk each behavior through the architecture, read the verdicts and the plan |
+| 3 Technical design, per cycle | The cycle's HLD: design a cycle that changes the architecture. Each item's LLD: design one work item | Answer the design questions |
+| 4 Implementation, per cycle | The cycle report: build, attack and merge each item, then check the cycle: mutation testing and a reading pass. At the end of an MVP, the verdict in its PRD: judge the MVP and release it | Approve the stops you kept, use what was built, give the verdict |
 
-Each later MVP runs phases 1b to 8 again. [process.md](process.md) has every phase in full: what to
-ask for, when it's done, and why it's there.
+Phases 3 and 4 repeat as cycles, one per logical component the plan builds next. A later MVP goes
+any way a feature iteration goes, from the earliest document it changes.
+[process.md](process.md) has every document in full: what to ask for, when it's ready, and why
+it's there.
 
 ## Using mlmd
 
@@ -87,7 +84,7 @@ product.
 ready, what's waiting for you, and the address of the plan view. Then do one of these:
 - start a new worktree session (the desktop app's worktree option, or `claude --worktree`), and
   mlmd gives it the next ready item;
-- in a session in the project folder, run `/clear` and then `/mlmd:next`.
+- in a conversation in the project folder, run `/clear` to start a new session, then `/mlmd:next`.
 
 Say go, and the session does the item. To work on several items at once, start more sessions.
 Each one takes a different item.

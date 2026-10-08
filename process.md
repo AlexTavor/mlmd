@@ -8,15 +8,47 @@ the PRD per MVP follow RUP's Vision and iteration plans. The evidence for the bu
 
 For developers who know how to build software and have not built much with an agent.
 
+## The shape of the process
+
+mlmd is the whole process. It breaks into four phases:
+
+1. **Requirements:** what the product is and what it does.
+2. **Functional design and plan:** how the product divides into logical components, and the plan
+   for building them.
+3. **Technical design:** the HLD and LLDs of what is built next.
+4. **Implementation:** building it, checking it and merging it.
+
+Phases 3 and 4 run in **cycles**, one per logical component (or group of
+components) the plan says to build next. (Frank, 2026-10-08.)
+
+The documents of each phase:
+
+| Phase | Documents |
+| --- | --- |
+| 1 Requirements | `docs/vision.md`, `docs/prd/mvp-N.md`, `docs/behaviors.md`, `features/*.feature`, the medium questions in `docs/open-questions.md` |
+| 2 Functional design and plan | `docs/architecture.md`, `docs/stack.md`, `docs/spikes/<name>.md`, `.pdd/plan.json` |
+| 3 Technical design (per cycle) | `docs/hld/<cycle>.md`, `docs/lld/W<id>-<name>.md` |
+| 4 Implementation (per cycle) | `docs/cycles/<cycle>.md`; at the end of an MVP, its verdict in `docs/prd/mvp-N.md` |
+
+The standing documents are kept current in every phase. Each document's purpose line, and how it
+is worked on, is under its phase below.
+
 ## Words
 
 - **Operator:** the person running the process with the agent. They answer, decide, use what's
   built and approve the stops. This document calls them \"you\".
-- **Phase:** a step of this process, 1a to 8.
-- **MVP:** one increment of the product, with its own PRD and verdict. Each MVP runs phases 1b to 8.
-- **Batch:** a group of work items in an MVP's plan, with a goal and exit criteria.
+- **Phase:** one of the four parts of the process: requirements, functional design and plan,
+  technical design, implementation (see The shape of the process).
+- **Cycle:** one run of phases 3 and 4 for a logical component, or group of components, that the
+  plan builds next. It has a goal and exit criteria. `.pdd/plan.json` calls cycles `batches`, dod's
+  word, until dod is renamed.
+- **MVP:** a bound on what is built next, with its own PRD and verdict. Humans draw it to keep
+  their thinking bounded; a later iteration may go any way (see After an MVP).
 - **Work item:** one unit of work in the plan, done on its own branch.
 - **Your items:** plan items only you can close: an MVP's verdict, a stop the trust level asks for.
+- **Session:** one new technical session of the LLM, with a new context. Nothing else is called a
+  session. `/clear` ends one and starts the next in the same conversation (the desktop app's
+  sidebar entry), so a conversation can hold several sessions.
 - **Fresh session:** a session that did not write the work it is given, started from the documents.
 - **The gates:** the checks that run before main moves.
 
@@ -39,51 +71,51 @@ Tooling this process needs).
     candidates it finds when it isn't sure which you mean. It reads them, showing progress if that
     takes more than about 20 seconds, lists the documents it will fill and why, writes what the
     sources mean into them, then asks only about gaps and contradictions. It runs you through every
-    phase from 1a, however far the existing project got: each phase is filled from what exists and
-    asks only what is missing. Its topics are the sections of the documents the phase fills, in
-    order; a topic with nothing to ask still gets its summary. Each topic's summary lists what was
+    document from the Vision on, however far the existing project got: each is filled from what
+    exists and asks only what is missing. Its topics are the sections of the document, in order; a topic with nothing to ask still gets its summary. Each topic's summary lists what was
     decided today, what changed from the sources, and what was imported unchanged. From then on
     mlmd's documents are the only master copy; the sources are inputs and are not kept in sync;
   - **joining a running project:** mlmd asks your role, records it in the register, shows where the
     project stands and why, and asks you any questions marked for your role. Your GitHub access
     sets what you can push. Teams tell each other about joiners through GitHub.
 
-  Before the first question, one screen shows the phases, where you are, and why this phase exists.
+  Before the first question, one screen shows the four phases, where you are, and the current
+  document with its purpose line.
 - **Overview:** in the desktop app mlmd keeps a pinned overview page, republished at each commit:
-  what needs your attention first, then every phase with where you are, then the current phase's
-  topics. In the CLI, `/mlmd:status` shows the same.
+  what needs your attention first, then the four phases with where you are, then the current
+  document's topics. In the CLI, `/mlmd:status` shows the same.
 - **The loop:** every session opens with its goal and a status line: what's done, what's ready, what
   waits for you, and the plan view's address. Then either:
   - start a new worktree session: the desktop app's worktree option, or `claude --worktree`. mlmd
     gives it the next ready item, the session names the item, and you say go; or
-  - in a session in the project folder, `/clear`, then `/mlmd:next`.
+  - in a conversation in the project folder, `/clear` to start a new session, then `/mlmd:next`.
 
   For parallel work, start another session. Each one takes a different ready item.
 - **Other commands:** `/mlmd:status` shows the plan in the chat. `/mlmd:trust` shows and changes the
   trust boxes, editing CLAUDE.md and the permission rules together. `/mlmd:release` tags and
   deploys a release.
 - **What you do:** answer interviews, decide what comes to you as a question, use what an item or a
-  batch names for you to try, approve the stops your trust level keeps, and give each MVP its
+  cycle names for you to try, approve the stops your trust level keeps, and give each MVP its
   verdict.
 - **What you don't do:** write status, keep track of the phase, make branches or worktrees, run
   merges, or remember to run reviews.
 - **Learning as you go:** the first time a step runs in a project, the session says in one line why
   the step exists.
 
-## 0. Sessions
+## Sessions
 
-Keep each session small, and slide from topic to topic within a phase. A topic is a section of a
-document being filled (in 1a: problem, users and core; features and MVPs; constraints; what to keep
-possible; standing documents), a spike, a work item or a review. A session never crosses into the
-next phase: when a phase ends, the next one starts in a new session, even if the context is still
-small. The phase's approval, commit and merge happen at that boundary, so the next phase starts from
-the approved documents alone. The review of a phase's documents, in a fresh session, belongs to the
-phase it checks. Within a phase, a session moves on to a new session when its context grows too
-large for you to keep in mind, before a large new topic, or for a deep dive. A session ends by
-writing its output files, committing them and merging them into main, so the next session starts
-from main. The next session starts by reading only those files, not the
-previous conversation. Too much in one session is lost to every later one, and fills both your
-context and the agent's.
+Keep each session small, and slide from topic to topic within a document. A topic is a section of
+a document being filled (in vision.md: problem, users and core; features and MVPs; constraints;
+what to keep possible; standing documents), a spike, a work item or a review. A session never
+crosses into the next document: when work on a document ends, the next one starts in a new
+session, even if the context is still small. Approval, commit and merge happen at that boundary,
+so the next document starts from the approved documents alone. The review of a document, in a
+fresh session, belongs to that document's work. Within a document, a session moves on to a new
+session when its context grows too large for you to keep in mind, before a large new topic, or for
+a deep dive. A session ends by writing its output files, committing them and merging them into
+main, so the next session starts from main. The next session starts by reading only those files,
+not the previous conversation. Too much in one session is lost to every later one, and fills both
+your context and the agent's.
 
 mlmd watches the session's context size:
 - **100K tokens more than it started with:** mlmd suggests a new session, for efficiency. If you
@@ -102,7 +134,7 @@ session starts from committed work only, so mlmd commits before it offers the ca
 
 A deep dive, such as a spike, a prototype, or going deeper into one part, is a detour that gets
 its own sessions. mlmd keeps the path as a stack in the plan, for example
-`1a › constraints › deep dive: retention`, and each status line shows it. When the deep dive ends,
+`vision.md › constraints › deep dive: retention`, and each status line shows it. When the deep dive ends,
 the next card returns you to the step you left, at the question where you stopped. Deep dives can
 nest.
 
@@ -116,7 +148,7 @@ the next.
 
 Documents change in any phase. When work turns up a change to a behavior, a rule, a term or an
 assumption, the document changes in the same commit as that work. Most product decisions will
-arrive after phase 1, while later work is being designed.
+arrive after the requirements phase, while later work is being designed.
 
 ### Product documents
 
@@ -226,7 +258,7 @@ source.
 
 Fragility is **high** when the design bends if the assumption is wrong, and **low** when a setting
 changes. A high-fragility assumption gets a spike, or a decision that makes it not matter, before
-anything is built on it (phase 3). A check that is waived is written into its entry, with what
+anything is built on it (see spikes, in phase 2). A check that is waived is written into its entry, with what
 stands in for it. Otherwise the entry reads as work still to do. Phase 1 adds beliefs about users,
 the environment and the data. Phase 2 adds beliefs about scale, speed and how dependencies behave.
 
@@ -268,9 +300,9 @@ vocabulary, so dod can draw it:
 }
 ```
 
-- **Batches** are numbered by their MVP: `1-2` is MVP 1's second batch. The first batch of each MVP
-  holds its requirement and architecture phases (1b to 3, and 1a for MVP 1), so progress shows
-  from the first session.
+- **Cycles** (`batches` in the file) are numbered by their MVP: `1-2` is MVP 1's second cycle.
+  The first entry of each MVP is not a cycle: it holds that MVP's phase 1 and 2 documents (from
+  the PRD to the plan, and the Vision for MVP 1), so progress shows from the first session.
 - **Items** are numbered W1, W2 across the project. An id is never reused: a cut item's number
   stays unused.
 - **`depends_on`** means "cannot correctly start until", not the order the plan happens to list
@@ -319,7 +351,7 @@ events are git events. In plague, four merged items still read pending for up to
 **The plan view.** dod draws the plan as a dependency graph. It lists the items ready to start, the
 critical path and how many items can run at once. It reads the plan and the status from main in
 git, so it is right after every merge without anyone updating it.
-- **Setup, in 1a:** `/mlmd:start` adds the repository to dod. mlmd installs dod itself (see Using
+- **Setup:** `/mlmd:start` adds the repository to dod. mlmd installs dod itself (see Using
   mlmd).
 - **Every session:** a SessionStart hook makes sure the plan view is running and shows you a status
   line before you type anything: done, ready, waiting for you, and the view's address. In the
@@ -335,7 +367,7 @@ The project's CLAUDE.md has a **Trust** section with five boxes. A checked box i
 for you:
 
 - [ ] **LLD:** you accept an item's LLD before its code is written.
-- [ ] **Batch end:** you use a finished batch before the next one starts.
+- [ ] **Cycle end:** you use a finished cycle before the next one starts.
 - [ ] **Merge:** an item merges into main on your word.
 - [ ] **Push:** main is pushed to origin on your word.
 - [ ] **Release:** a release is tagged and deployed on your word.
@@ -357,9 +389,9 @@ How each box is enforced:
 - **What the hook can't see:** it reads the command's text, so a push run from inside another
   script gets past it. The boxes stop the agent's mistakes, not an agent that hides what it
   runs.
-- **Batch end:** one of your items at the end of each batch, which the next batch's first items
+- **Cycle end:** one of your items at the end of each cycle, which the next cycle's first items
   depend on. The plan view shows it as waiting for you.
-- **LLD:** the session stops after the batch's design review and waits for your word, which each
+- **LLD:** the session stops after the cycle's design review and waits for your word, which each
   LLD records. Nothing mechanical enforces this box.
 
 **A stop whatever the boxes say:** any irreversible operation on real data, such as a migration
@@ -370,7 +402,7 @@ make an irreversible mistake cheaper.
 
 ## Git
 
-- **One repository per project** (1a).
+- **One repository per project** (see Setup).
 - **Branches and worktrees from phase 1 on.** All work happens on a branch, in a worktree of its
   own, with one session per worktree. No session checks out main. The folder the repository was
   created in doesn't stay on main either: after the first commit, detach it
@@ -392,7 +424,7 @@ make an irreversible mistake cheaper.
   - places the worktree beside the repository, not inside it. Tools that walk the repository pick
     up a worktree nested in it: robotics-lms had to exclude the desktop app's `.claude/worktrees/`
     from its lint and its mutation runs. If the desktop app's features need their worktrees under
-    `.claude/worktrees/`, they go there instead, and phase 2 writes each tool's exclusion.
+    `.claude/worktrees/`, they go there instead, and architecture.md writes each tool's exclusion.
 - **Moving to the next item.** In a session that already worked on an item, `/mlmd:next` leaves
   that worktree (ExitWorktree, keeping it), then enters the next item's worktree by its name,
   which goes through the WorktreeCreate hook. The hook creates the worktree, or prints the path of
@@ -426,7 +458,7 @@ from its description: in one project's records, 1,472 reminders to apply a pract
 to open that practice 10 times. There are three kinds:
 - **Guidance, in the working session:** skills and templates. The interview, the LLD template, the
   merge procedure, handoff.
-- **Checks, in a fresh session:** workflows. design-review for the design documents, a batch's
+- **Checks, in a fresh session:** workflows. design-review for the design documents, a cycle's
   together, and the adversarial review before merge. Whatever judges the agent's work runs outside the session that
   made it.
 - **Enforcement and setup:** hooks and scripts. The gates in the pre-push hook, the refusal of
@@ -434,7 +466,7 @@ to open that practice 10 times. There are three kinds:
   first-session install, and the trust hook with its permission rules.
 
 design-review's kinds: the Vision, and each MVP's PRD with its behaviors, use `prd` (`gdd` for a
-game). architecture.md uses `hld`. A batch's designs, reviewed together, use `hld` when the batch has
+game). architecture.md uses `hld`. A cycle's designs, reviewed together, use `hld` when the cycle has
 an HLD and `lld` when it doesn't. An item's review of its own uses `lld`.
 
 They ship as one Claude Code plugin, mlmd: skills, workflows (in the plugin's `workflows/` folder,
@@ -449,34 +481,58 @@ Every open question has one of three levels:
 - **Medium:** changes behavior, but not the architecture.
 - **Small:** an implementation detail. It doesn't go in the documents.
 
-## 1. Requirements
+## Setup
 
-Phase 1 covers the whole product first (1a), then one MVP (1b). Each later MVP starts at 1b (see
-"Each later MVP" at the end).
+Setting up is not a phase. Before anything is written:
+- a folder and a git repository for this project and nothing else. Every document and all the
+  code live there, and the project's sessions start there. Claude Code keeps CLAUDE.md, its memory
+  and its session history per folder, so a project that shares a folder with other work shares all
+  three;
+- `.pdd/plan.json`, with the documents of phases 1 and 2 as its first items, and
+  `.pdd/constitution.md`. The repository is added to dod;
+- CLAUDE.md, with every trust box checked, and the trust hook and permission rules that go with
+  them;
+- the pre-push hook, starting with the plan's structure check. The plan adds the rest of the gates
+  (see `.pdd/plan.json` under phase 2).
 
-### 1a. The whole product
+`/mlmd:start` does all of this.
 
-- **Project:** before anything is written:
-  - a folder and a git repository for this project and nothing else. Every document and all the
-    code live there, and the project's sessions start there. Claude Code keeps CLAUDE.md, its
-    memory and its session history per folder, so a project that shares a folder with other work
-    shares all three;
-  - `.pdd/plan.json`, with the phases up to 3 as its first items, and `.pdd/constitution.md`. The
-    repository is added to dod;
-  - CLAUDE.md, with every trust box checked, and the trust hook and permission rules that go
-    with them;
-  - the pre-push hook, starting with the plan's structure check. Phase 4 adds the rest of the
-    gates.
+## How each document is worked on
 
-  `/mlmd:start` does all of this.
+The next step is always to work on the next document of the current phase. A phase can have
+several documents in progress at once, and a document is worked on and iterated, not finished
+once. Work that produces no document of its own (code, an attack, mutation testing, a reading
+pass, a release) is defined by a document and records its result in one.
+
+Each document below has:
+- **For:** its purpose line. It is canonical: mlmd introduces the document with this line, word
+  for word, together with the phase it belongs to.
+- **Needs:** the documents it is written from.
+- **Ready when:** what makes it good enough for the documents that need it. Standing documents
+  are never ready; they are current or not.
+
+Work on each document starts in a new session, and a document can take several (see Sessions).
+The fresh-session review of a document belongs to that document's work.
+
+## Phase 1: Requirements
+
+The whole product first (the Vision), then one MVP (its PRD, behaviors and scenarios), then the
+questions that change behavior but not structure.
+
+### `docs/vision.md`
+
+- **For:** Decide the whole product: what it is and which MVP each feature belongs to.
+- **Needs:** you; existing code and specs, if the project starts from them.
 - **Ask:** "Interview me about the whole product until you can write vision.md. Ask one question
   at a time with a progress count, or numbered questions a few per round if I ask for that. At the
-  end of each topic, summarize what was written to which document and section, and who decided. Mark every decision you write with who made it and when: me, or you
-  so work could continue. Add each term to the glossary as it comes up. Anything not decided goes
-  into open-questions.md with its level, never into the documents as settled."
+  end of each topic, summarize what was written to which document and section, and who decided.
+  Mark every decision you write with who made it and when: me, or you so work could continue. Add
+  each term to the glossary as it comes up. Anything not decided goes into open-questions.md with
+  its level, never into the documents as settled."
 - **The interview:** answer, or by number in rounds. You can stop after any answer: the next
-  session's status line shows where the interview stands and continues there. Say "explain" when a question is unclear. When you and the
-  agent use a word differently, settle it in the glossary before going on.
+  session's status line shows where the interview stands and continues there. Say "explain" when
+  a question is unclear. When you and the agent use a word differently, settle it in the glossary
+  before going on.
 - **Cheapest prototype (optional):** some large questions can only be answered by trying something:
   whether it's fun, whether an interaction feels right, whether the output is useful. For each such
   question, build the cheapest thing that answers it, in whatever tool is fastest. Before building
@@ -498,7 +554,7 @@ Phase 1 covers the whole product first (1a), then one MVP (1b). Each later MVP s
 - **You:** answer, decide, reject. Read every decision marked as the agent's: each topic summary
   ends with a block "mlmd decided, please confirm", one numbered line each, and you reply "ok" or,
   for example, "2: no".
-- **Done when:**
+- **Ready when:**
   - every feature is marked with its MVP, or with none yet;
   - every large question about a later feature is answered, or listed in the Vision among what the
     architecture must keep possible;
@@ -506,52 +562,69 @@ Phase 1 covers the whole product first (1a), then one MVP (1b). Each later MVP s
   - the review's findings are settled;
   - the standing documents exist in the form described under Standing documents, and you have seen
     each one's summary. The standing-documents topic is never skipped, also not on an import.
-- **Outputs:** the project's repository, the plan shown in dod, vision.md, and the standing
-  documents.
 
-### 1b. An MVP
+### `docs/prd/mvp-N.md`
 
-- **Ask:** "Take these features from the Vision for MVP N. Write their behaviors into behaviors.md,
-  and the PRD for this MVP. Interview me about anything not settled."
+- **For:** Decide one MVP: what it's for and what result would be a no.
+- **Needs:** vision.md.
+- **Ask:** "Take these features from the Vision for MVP N. Write the PRD for this MVP, then their
+  behaviors into behaviors.md. Interview me about anything not settled."
 - **Keep it small:** the sessions, not the MVP. The MVP is a full product for what it is for. Push
   back on features that don't serve that purpose; everything else stays in the Vision for a later
-  MVP. Overview comes from splitting the work into phase 4's batches and into small sessions, not
-  into smaller MVPs.
+  MVP. Overview comes from splitting the work into cycles and small sessions, not into smaller
+  MVPs.
 - **Scope first:** a gap that decides which behaviors get written at all (what the MVP is for, what
   it leaves out) is asked before writing. Other gaps are asked after.
-- A cheapest prototype (see 1a) can answer a large question here too.
-- **Review:** design-review of the PRD and the behaviors it adds or changes, in a fresh session,
-  looking for:
+- A cheapest prototype (see vision.md) can answer a large question here too.
+- **Ready when:** what it's for and what would be a no are stated; the behaviors it adds or
+  changes are listed by id; every decision is marked with who made it; no large question about
+  this MVP is open, and any new large question about a later feature is answered or added to the
+  Vision's list of what the architecture must keep possible.
+
+### `docs/behaviors.md`
+
+- **For:** State what the product does: contract, failure, edges.
+- **Needs:** the PRD.
+- **Review:** design-review of the PRD and the behaviors it adds or changes, together, in a fresh
+  session, looking for:
   - a behavior without its Failure or Edges line;
   - a term used with two meanings, or two terms for one thing;
   - a belief the design depends on that nobody chose. Each one goes into assumptions.md;
   - a behavior or scenario for a feature outside this MVP.
 - **You:** answer, decide, reject. Read every decision marked as the agent's, and every rule.
-- **Done when:**
-  - no large question about this MVP is open;
-  - any new large question about a later feature is answered, or added to the Vision's list of
-    what the architecture must keep possible;
-  - every decision is marked with who made it;
-  - every behavior this MVP adds or changes has its contract, Failure and Edges;
-  - every term the documents use with a specific meaning is in the glossary;
-  - the review's findings are settled.
-- **Outputs:**
-  - `docs/prd/mvp-N.md`;
-  - the behaviors this MVP adds or changes, in behaviors.md;
-  - `features/*.feature`: behavior tests in Gherkin, each scenario tagged with its behavior's id
-    (`@B7`), covering the Failure and Edges lines as well as the normal case.
+- **Ready when:** every behavior this MVP adds or changes has its contract, Failure and Edges;
+  every term the documents use with a specific meaning is in the glossary; the review's findings
+  are settled.
+
+### `features/*.feature`
+
+- **For:** Make each behavior testable.
+- **Needs:** behaviors.md.
+- **Ready when:** every behavior this MVP adds or changes has scenarios in Gherkin, each tagged
+  with its behavior's id (`@B7`), covering the Failure and Edges lines as well as the normal case.
 
 **Why Gherkin:** it doesn't depend on the stack, runners exist for most languages (Cucumber for
 JS/Java, behave for Python, godog for Go, Reqnroll for .NET), and developers already know it. The
-scenarios can run once phase 2 has written the step definitions that bind them to the system.
+scenarios can run once the step definitions bind them to the system (see stack.md).
 
-## 1.5 Refinement
+### `docs/open-questions.md`, the medium questions
 
-Answer the medium questions in open-questions.md. Each one has a default that work proceeds on
-until you rule. Because they don't affect the architecture, this can run before phase 2, alongside
-it, or after it.
+- **For:** Settle the questions that change behavior but not structure.
+- **Needs:** the documents above.
+- Answer the medium questions. Each one has a default that work proceeds on until you rule.
+  Because they don't affect the architecture, this can run before phase 2, alongside it, or after
+  it.
+- **Ready when:** no medium question blocks an item the plan is about to start.
 
-## 2. Architecture, then stack
+## Phase 2: Functional design and plan
+
+How the product divides into logical components, what it is built with, which beliefs are proved
+before anything rests on them, and the plan.
+
+### `docs/architecture.md`
+
+- **For:** Divide the product into logical components and walk every behavior through them.
+- **Needs:** behaviors.md, and the Vision's list of what to keep possible.
 
 The agent is lead architect: it proposes an architecture that covers every behavior in
 behaviors.md, and keeps possible the later features the Vision lists for it.
@@ -562,73 +635,89 @@ behaviors.md, and keeps possible the later features the Vision lists for it.
   architecture.md as its key flows.
 - **Later features:** each one the Vision lists for the architecture gets a decision: what keeps it
   possible and what that costs now, or a decision not to, with what adding it later would cost.
-- **Then the stack:** what supports the requirements and the architecture as they stand. Any
-  constraint known up front (platform, language, hosting) belongs in phase 1, not here.
-- **Assumptions:** every belief the architecture or the stack depends on that nobody proved goes
-  into assumptions.md, with its fragility.
+- **Assumptions:** every belief the architecture depends on that nobody proved goes into
+  assumptions.md, with its fragility.
+- **Review:** design-review of architecture.md, kind `hld`, in a fresh session.
+- **Ready when:** every behavior is walked through; the review is settled; it holds the parts, the
+  key flows, the decisions (each marked with who made it and when), and a **Deferred** section for
+  technical options set aside. With it: rules for the module boundaries it depends on, each with
+  its tier, and glossary entries for its parts.
+
+### `docs/stack.md`
+
+- **For:** Pick what supports the requirements and the architecture.
+- **Needs:** architecture.md. Any constraint known up front (platform, language, hosting) is in the
+  Vision already.
 - **Step definitions:** choose the test runner and write the step definitions that bind the Gherkin
   steps to the system. Watch for steps that assert nothing: if a scenario's steps only log or
   return, it passes against any implementation. A fresh session checks them by asking "which wrong
   implementation passes these?"
-- **Review:** design-review of architecture.md, kind `hld`, in a fresh session.
-- **Outputs:**
-  - `docs/architecture.md`: the parts, the key flows, the decisions (each marked with who made it
-    and when), and a **Deferred** section for technical options set aside;
-  - `docs/stack.md`;
-  - the high-fragility assumptions, which are phase 3's input;
-  - rules for the module boundaries the architecture depends on, each with its tier;
-  - glossary entries for the architecture's parts;
-  - the project's install command, which the WorktreeCreate hook runs in every new worktree.
+- **Ready when:** every choice is a decision with who made it; every belief the stack depends on
+  is in assumptions.md; the project's install command is written, which the WorktreeCreate hook
+  runs in every new worktree.
 
-## 3. Spikes
+### `docs/spikes/<name>.md`
+
+- **For:** Prove a risky assumption before anything is built on it.
+- **Needs:** a high-fragility entry in assumptions.md.
 
 Every high-fragility assumption gets a spike, or a decision that makes it not matter, before
-anything is built on it. It could be a mechanism, a part of the stack, an integration. One session
-per spike, doing the minimum needed to answer its question.
+anything is built on it. It could be a mechanism, a part of the stack, an integration. Each spike
+does the minimum needed to answer its question.
 
 - **Before starting:** state the question, what result would be a no, and where the spike has to
   run: the device, the data or the real service the question is about. A result from anywhere else
   answers a different question. If that place isn't at hand, say so now and name what will stand
   in. A spike planned inside the work it gates tends to be skipped once that work is built.
-- **Output:** `docs/spikes/<name>.md` with the question, where it ran, what was done, and the
-  verdict. The assumption's entry gets the verdict. The spike code is thrown away unless the
-  verdict says to keep it. Any trap the spike found goes in footguns.md.
+- **Ready when:** it holds the question, where it ran, what was done, and the verdict, and the
+  assumption's entry has the verdict. The spike code is thrown away unless the verdict says to keep
+  it. Any trap the spike found goes in footguns.md.
 - **Waived:** a spike that won't run is written into its assumption, with what stands in for it.
-- **Feedback:** a verdict that changes the architecture goes back to 2. One that changes a behavior
-  goes back to 1. Either way, the documents change in the same commit as the verdict.
+- **Feedback:** a verdict that changes the architecture reopens architecture.md. One that changes a
+  behavior reopens behaviors.md. Either way, the documents change in the same commit as the
+  verdict.
 - **A likely spike:** can the Gherkin steps drive this stack? This is hard for real-time systems and
   games, where state is continuous and timing matters.
 
-## 4. Plan the build
+### `.pdd/plan.json`, the build
 
-After phase 3 for MVP 1, and after the phase 2 check for a later MVP.
-
-- **Ask:** "Plan MVP N's build in .pdd/plan.json: work items in batches, each with what it cannot
-  correctly start until, its size, its risk and the behaviors it delivers. Give each batch a goal
+- **For:** Plan the build: cycles of work items, with their dependencies.
+- **Needs:** the documents above; for MVP 1, the spikes' verdicts.
+- **Ask:** "Plan MVP N's build in .pdd/plan.json: work items in cycles, each with what it cannot
+  correctly start until, its size, its risk and the behaviors it delivers. Give each cycle a goal
   and exit criteria that can be checked. End with the MVP's verdict as the one final item."
 - **Size items for review:** an item is small enough when its LLD can be read in one sitting, and a
-  batch when its designs can be reviewed together in one.
-  A file that will obviously grow past a few hundred lines is a reason to split the item now, not
-  after the code exists.
-- **Your items:** the MVP's verdict, and a stop at the end of each batch while that trust box is
+  cycle when its designs can be reviewed together in one. A file that will obviously grow past a
+  few hundred lines is a reason to split the item now, not after the code exists.
+- **Your items:** the MVP's verdict, and a stop at the end of each cycle while that trust box is
   checked.
 - **The gates:** before the first build item, the pre-push hook runs types, lint, tests, the Gherkin
   scenarios, the plan's structure check and the gated rules. Try each check once on the real
   failure it exists for. A check counts once it has been seen to fail on a real case, not only on a
   planted example: in one project a boundary check passed a module that broke its rule, until a
   review noticed.
-- **You:** read the plan in dod: the batches, what each item delivers, what can run in parallel.
-- **Done when:** every behavior of the MVP is delivered by an item, the structure check passes, and
+- **You:** read the plan in dod: the cycles, what each item delivers, what can run in parallel.
+- **Ready when:** every behavior of the MVP is delivered by an item, the structure check passes, and
   each gate has been seen to fail on a real case.
 
-## 5. Batch design
+## Cycles: phases 3 and 4
 
-Only for a batch that adds or changes architecture: new parts, new stored data, new flows between
-parts. Any other batch goes straight to its items, whose LLDs are written against
-architecture.md.
+Phases 3 and 4 run once per cycle: one logical component, or group of components, that the plan
+builds next. A cycle's designs are written and reviewed together, then its items are built one by
+one, then the cycle is checked.
 
-- **Ask for `docs/hld/<batch>.md`:**
-  - what the batch builds and why;
+## Phase 3: Technical design
+
+### `docs/hld/<cycle>.md`
+
+- **For:** Design a cycle that changes the architecture.
+- **Needs:** architecture.md and the plan.
+
+Only for a cycle that adds or changes architecture: new parts, new stored data, new flows between
+parts. Any other cycle goes straight to its LLDs, written against architecture.md.
+
+- **It holds:**
+  - what the cycle builds and why;
   - its decisions, each marked with who made it and when;
   - what can go wrong, with a guard for each;
   - what it costs;
@@ -636,47 +725,37 @@ architecture.md.
   - what the LLDs must decide;
   - its changes to the glossary, the rules and the assumptions;
   - what it defers.
-- **Review:** together with the batch's LLDs, in the batch's one design review (6, step 2). A
+- **Review:** together with the cycle's LLDs, in the cycle's one design review (see the LLD). A
   finding that would overturn one of your decisions comes to you as a question.
-- **Done when:** the batch review's findings are settled. Where the batch changes the architecture,
+- **Ready when:** the cycle review's findings are settled. Where the cycle changes the architecture,
   architecture.md changes in the same commit.
 
-## 6. Work items
+### `docs/lld/W<id>-<name>.md`
 
-A batch's LLDs are written first, all of them in one session, after its HLD if it has one, and
-reviewed together. Then each item is built in its own worktree, in its own session.
+- **For:** Design one work item.
+- **Needs:** the cycle's HLD if it has one, otherwise architecture.md; the behaviors it delivers.
 
-1. **LLD**, `docs/lld/W<id>-<name>.md`, from the template:
-   - a header: the behaviors it delivers, what it depends on, what you'll open to see it work, and
-     whether its code gets the adversarial review (step 4), with the reason;
-   - **Files:** every file it adds or changes, with what the file is responsible for and what it
-     exports. A file missing from this table should not appear in the diff;
-   - **Contracts:** the types that cross a module boundary, and what happens to invalid input. It
-     fails or reaches the user, never quietly;
-   - **Tests:** each test file, what it pins, and the behavior and rule ids it covers;
-   - **Not doing:** what a reader would expect here and won't find, and where it happens instead.
-2. **Design review, one per batch,** in a fresh session, once all the batch's LLDs are written: its
-   HLD, if it has one, and its LLDs, put into one file, since design-review reads one document. An
-   item the plan sizes XL, or rates high risk, also gets a review of its own. The findings are fixed
-   in the documents before any of the batch's code. If the LLD box is checked, the session then
-   waits for your word.
-3. **Implementation**, in the worktree. The gates run between edits, and each verified step is a
-   commit.
-4. **Adversarial review before merge**, in a fresh session. It attacks:
-   - the tests, always: "which wrong implementation passes these?";
-   - the code, when the item reads outside input, writes stored data or changes what stored data
-     means, or does something that can't be undone.
+A cycle's LLDs are written first, all of them in one session, after its HLD if it has one, and
+reviewed together.
 
-   What it finds is fixed before the merge.
-5. **Merge**, by the merge procedure, as the trust level says. The item is done when its merge is
-   on main.
+- **From the template:**
+  - a header: the behaviors it delivers, what it depends on, what you'll open to see it work, and
+    whether its code gets the adversarial review, with the reason;
+  - **Files:** every file it adds or changes, with what the file is responsible for and what it
+    exports. A file missing from this table should not appear in the diff;
+  - **Contracts:** the types that cross a module boundary, and what happens to invalid input. It
+    fails or reaches the user, never quietly;
+  - **Tests:** each test file, what it pins, and the behavior and rule ids it covers;
+  - **Not doing:** what a reader would expect here and won't find, and where it happens instead.
+- **Design review, one per cycle,** in a fresh session, once all the cycle's LLDs are written: its
+  HLD, if it has one, and its LLDs, put into one file, since design-review reads one document. An
+  item the plan sizes XL, or rates high risk, also gets a review of its own. The findings are fixed
+  in the documents before any of the cycle's code. If the LLD box is checked, the session then
+  waits for your word.
+- **Ready when:** the cycle's design review is settled, and your word is recorded if the LLD box is
+  checked.
 
-**Why these reviews:** in one project, reviews by fresh sessions found 11 of its 15 most
-consequential defects, for about 15% of its tokens. Nine of the ten largest code defects they found
-were in those three kinds of code. And agent-written tests can pass without testing anything: one
-set of removal tests passed on code that removed nothing.
-
-**Why one design review per batch:** a reviewer reads the code and the standing documents before
+**Why one design review per cycle:** a reviewer reads the code and the standing documents before
 the document it is given, and that reading, not the document, sets most of the cost. In one
 project, 74 reviews of single designs cost 189k to 480k tokens each, median 324k. Among the last of
 them, the shortest document, 1,703 words, cost 392k, and one review of a batch's five documents
@@ -684,32 +763,59 @@ together, 6,369 words, cost 396k. That review raised 6 findings across the five,
 review raises a median of 5, so the items with the most room for a defect, XL or high risk, keep a
 review of their own (`research/review-cost-2026-10-04.md`).
 
-## 7. End of a batch
+## Phase 4: Implementation
 
-- **You:** use what the batch built. If the batch-end box is checked, the next batch waits for your
+### `docs/cycles/<cycle>.md`, the cycle report
+
+- **For:** Build, attack and merge each item, then check the cycle: mutation testing and a reading
+  pass.
+- **Needs:** the cycle's LLDs, reviewed.
+
+The code is the work; the report is where its results are written. For each item:
+1. **Implementation**, in the item's worktree, in its own session. The gates run between edits, and
+   each verified step is a commit.
+2. **Adversarial review before merge**, in a fresh session. It attacks:
+   - the tests, always: "which wrong implementation passes these?";
+   - the code, when the item reads outside input, writes stored data or changes what stored data
+     means, or does something that can't be undone.
+
+   What it finds is fixed before the merge, and recorded in the report.
+3. **Merge**, by the merge procedure, as the trust level says. The item is done when its merge is
+   on main.
+
+Then, at the end of the cycle:
+- **You:** use what the cycle built. If the cycle-end box is checked, the next cycle waits for your
   item. What you find becomes items in the plan.
-- **Mutation testing** on what the batch changed in the modules that hold data or make decisions:
-  the mutants on the files the batch changed, and on the modules whose tests it changed, each run
+- **Mutation testing** on what the cycle changed in the modules that hold data or make decisions:
+  the mutants on the files the cycle changed, and on the modules whose tests it changed, each run
   against the whole suite. A tool (Stryker, for TypeScript) makes small changes to the code and
   reruns the tests, and a change no test notices is a gap. Read every survivor the same day. Each
   one is a missing test, dead code, or a change that makes no difference, and each is closed. A run
-  over the whole codebase re-judges code no batch changed and takes hours; it runs only when you
+  over the whole codebase re-judges code no cycle changed and takes hours; it runs only when you
   ask for one.
 - **A reading pass** for failures that leave no trace: swallowed errors, work started and never
   finished, success reported for nothing written.
 - **Once no session can read the whole codebase:** a check for duplicated code. The agent writes a
   new helper where one already exists.
-- **Done when:** the batch's exit criteria are met.
+- **Ready when:** every item is merged; the attack findings, survivors and reading-pass findings
+  are settled or turned into plan items; the cycle's exit criteria are met.
 
-**Why:** a mutation run found a fault in code the current model wrote: an unreadable save was
-marked writable, so one refused read would have written a new save over the player's. A reading
-pass found two hangs that no check could see. Only what the batch changed: in one project, two runs
-over the whole codebase took over two hours each, for 532 and then 604 mutants, and caught every
-one both times; between them the batch had changed the files of 135 of the 604, none in its
-simulation (`research/mutation-scope-2026-10-05.md`).
+**Why these reviews:** in one project, reviews by fresh sessions found 11 of its 15 most
+consequential defects, for about 15% of its tokens. Nine of the ten largest code defects they found
+were in those three kinds of code. And agent-written tests can pass without testing anything: one
+set of removal tests passed on code that removed nothing.
 
-## 8. End of an MVP, and release
+**Why mutation testing and a reading pass:** a mutation run found a fault in code the current model
+wrote: an unreadable save was marked writable, so one refused read would have written a new save
+over the player's. A reading pass found two hangs that no check could see. Only what the cycle
+changed: in one project, two runs over the whole codebase took over two hours each, for 532 and
+then 604 mutants, and caught every one both times; between them the batch had changed the files of
+135 of the 604, none in its simulation (`research/mutation-scope-2026-10-05.md`).
 
+### `docs/prd/mvp-N.md`, the verdict
+
+- **For:** Judge the MVP and release it.
+- **Needs:** the plan's final item, ready.
 - **The verdict:** you use the MVP against what it was for, and against the result its PRD said
   would be a no. The verdict goes into its PRD and closes the MVP's final item.
 - **Release:** a tag on main, deployed from the tag. If the release box is checked, you first read
@@ -717,22 +823,26 @@ simulation (`research/mutation-scope-2026-10-05.md`).
   alone, with an earlier model, went to production accepting any Google account as admin and
   running HTML stored in its content. Reading found both.
 - **After release,** what users report becomes items.
+- **Ready when:** the verdict is written; a release is tagged, on your word if the box is checked.
 
-## Each later MVP
+## After an MVP
 
-1. Revise the Vision if the last MVP's verdict changes the direction.
-2. 1b: the new MVP's PRD, the behaviors it adds or changes, and their scenarios.
-3. 1.5 for its medium questions.
-4. Phase 2 as a check: walk its new and changed behaviors through the architecture. Change the
-   architecture only where one can't be walked through, and record the decision.
-5. Phase 3 for its new high-fragility assumptions.
-6. Phases 4 to 8 for its build.
+An MVP bounds thinking about a product that does not exist yet; it is not a fixed sequence. A
+later iteration goes any way a usual feature-changing iteration goes. It reopens the earliest
+document it changes, through a change request, and continues from there. A common path:
+1. Revise the Vision if the last verdict changes the direction.
+2. The new MVP's PRD, the behaviors it adds or changes, and their scenarios; then its medium
+   questions.
+3. architecture.md as a check: walk the new and changed behaviors through it. Change it only where
+   one can't be walked through, and record the decision.
+4. Spikes for new high-fragility assumptions.
+5. The plan, then its cycles.
 
 ## Tooling this process needs
 
 Parts of this process rely on tools that don't exist yet:
 - **dod:**
-  - `batches` and `batch` as names for its `phases` and `phase`;
+  - `cycles` and `cycle` as names for its `phases` and `phase` (the plan says `batches` today);
   - status derived from git, from the `Done:` trailers and the branches;
   - the plan read from main instead of from a checkout;
   - your items shown as waiting for you;
