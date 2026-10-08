@@ -18,7 +18,7 @@ mlmd is the whole process. It breaks into four phases:
 3. **Technical design:** the HLD and LLDs of what is built next.
 4. **Implementation:** building it, checking it and merging it.
 
-Phases 3 and 4 run in cycles called **sprints**, one per logical component (or group of
+Phases 3 and 4 run in **cycles**, one per logical component (or group of
 components) the plan says to build next. (Frank, 2026-10-08.)
 
 How today's sections map onto the four, proposed by Claude and still open:
@@ -27,10 +27,10 @@ How today's sections map onto the four, proposed by Claude and still open:
 | --- | --- |
 | 1 Requirements | 1a the whole product, 1b an MVP, 1.5 refinement |
 | 2 Functional design and plan | 2 architecture and stack, 3 spikes, 4 plan the build |
-| 3 Technical design (per sprint) | 5 batch design, the LLDs of 6 |
-| 4 Implementation (per sprint) | the code, attack and merge of 6; 7 end of a batch; 8 verdict and release |
+| 3 Technical design (per cycle) | 5 batch design, the LLDs of 6 |
+| 4 Implementation (per cycle) | the code, attack and merge of 6; 7 end of a batch; 8 verdict and release |
 
-A sprint is today's batch. The rest of this document still uses the older numbering until it is
+A cycle is today's batch. The rest of this document still uses the older numbering until it is
 rewritten around documents (D-26).
 
 ## Words
