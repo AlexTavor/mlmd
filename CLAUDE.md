@@ -5,7 +5,7 @@ that will run it. It is for developers who know how to build software and have n
 an agent: it leaves out the engineering they already know and covers what changes when an agent
 writes the code. The readers are experienced developers, not juniors.
 
-- `process.md`: the process, phases 1a to 8: sessions, documents, the plan, trust, git, tools,
+- `process.md`: the process, in four phases centred on documents: sessions, documents, the plan, trust, git, tools,
   requirements, architecture, spikes, and the build through release.
 - `research/`: the evidence behind it, one dated file per piece of research.
 - `UNHANDLED_ISSUES.md`: issues found outside the current task.

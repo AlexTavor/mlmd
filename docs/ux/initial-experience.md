@@ -1,7 +1,8 @@
 # mlmd: initial user experience
 
-From hearing of mlmd until the first phase (1a, the Vision interview, or its code-and-spec-first
-equivalent) is under way. Focus: the Claude Code desktop app on Windows; CLI and web follow later.
+From hearing of mlmd until work on the first document (the Vision interview, or its
+code-and-spec-first equivalent) is under way. Terms follow process.md's four phases and documents
+(D-29); decisions made earlier keep their dates. Focus: the Claude Code desktop app on Windows; CLI and web follow later.
 
 ## Master rule: small, sliding contexts
 
@@ -46,12 +47,9 @@ D-21)
   folder or an existing repo and runs `git init` itself if needed, so the session works in the
   project folder and one-click cards can appear. (Frank, 2026-10-05)
 - mlmd asks which entry applies: 1 Idea or law, 2 Code and specs, 3 Joining. (Frank, 2026-10-05)
-- Phases are introduced by their canonical purpose line from process.md (Words, Phase), word for
-  word, with the number as an anchor: "1a · Decide the whole product: what it is and which MVP each
-  feature belongs to". (Frank, 2026-10-08)
-- The introduction names the phase's main document, from the same table: "1a · Decide the whole
-  product: what it is and which MVP each feature belongs to · `docs/vision.md`". (Frank,
-  2026-10-08; the document per phase chosen by Claude, see the open question)
+- Each document is introduced by its canonical purpose line from process.md, word for word,
+  with its phase: "Requirements · `docs/vision.md` · Decide the whole product: what it is and which
+  MVP each feature belongs to". (Frank, 2026-10-08; replaces the per-phase lines, D-29)
 - Before the first question: one screen with the phases, where the user is, and one line on why
   this phase exists (BR-29). (Frank, 2026-10-05)
 - A joiner is asked their role on first start and mlmd records it in the register; the technical
@@ -67,9 +65,9 @@ D-21)
   - it shows progress when reading takes more than about 20 seconds;
   - it writes what the sources mean, then asks about gaps: the process is iterative, and for an
     existing system interpreting first is right ("write what users mean");
-  - it runs the user through every phase from 1a, even when the project is further along, since
-    mlmd targets enterprise applications;
-  - topics are the sections of the documents the phase fills, in the order it builds them (for 1a:
+  - it runs the user through every document from the Vision on, even when the project is further
+    along, since mlmd targets enterprise applications;
+  - topics are the sections of the document being worked on, in order (for vision.md:
     problem, users and core; features and MVPs; constraints; what to keep possible; standing
     documents). Each gap question belongs to its section's topic. The count is per topic and
     overall ("constraints, 1 of 2; question 4 of 5"). A topic with no gaps gets a one-line summary;
@@ -120,11 +118,12 @@ D-21)
   then the status line, then the first question. It doesn't list the outputs or what it needs from
   the user; those follow from the conversation. (Frank, 2026-10-06; UX test 3)
 - Overview, so the user never feels lost (Frank, 2026-10-07; UX test):
-  - the status line has two lines: the phase map (`1a ✓ › 1b ● › 2 Architecture › …`) and the
-    current phase's topics with counts, ending with "your focus: …". The user can ask "where are
+  - the status line has two lines: the phase map with the current document
+    (`Requirements: vision.md ✓ › prd ● › behaviors › … | Functional design › …`) and the current
+    document's topics with counts, ending with "your focus: …". The user can ask "where are
     we?" for it any time;
   - in the desktop app, a pinned overview artifact: "your focus now" first (open questions,
-    decisions to confirm, the next session), then the phase strip, then the current phase's topics.
+    decisions to confirm, the next session), then the phase strip, then the current document's topics.
     mlmd republishes it at each commit and shows when it was updated. In the CLI, `/mlmd:status`
     shows the same.
 
@@ -139,7 +138,4 @@ D-21)
   questions with topic summaries) are made jointly: Alex and Frank own the process together (D-16). (Frank, 2026-10-05)
 
 ## Open questions
-- Main document per phase, chosen by Claude: 1b is the PRD rather than behaviors.md (the PRD
-  names what the MVP adds); 6 is the item's LLD although the code is the real output; 7 has no
-  document of its own, so it names the plan, where findings become items. Frank to confirm.
 - None for this journey.
