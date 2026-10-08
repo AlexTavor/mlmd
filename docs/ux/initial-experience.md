@@ -49,6 +49,9 @@ D-21)
 - Phases are introduced by their canonical purpose line from process.md (Words, Phase), word for
   word, with the number as an anchor: "1a · Decide the whole product: what it is and which MVP each
   feature belongs to". (Frank, 2026-10-08)
+- The introduction names the phase's main document, from the same table: "1a · Decide the whole
+  product: what it is and which MVP each feature belongs to · `docs/vision.md`". (Frank,
+  2026-10-08; the document per phase chosen by Claude, see the open question)
 - Before the first question: one screen with the phases, where the user is, and one line on why
   this phase exists (BR-29). (Frank, 2026-10-05)
 - A joiner is asked their role on first start and mlmd records it in the register; the technical
@@ -136,4 +139,7 @@ D-21)
   questions with topic summaries) are made jointly: Alex and Frank own the process together (D-16). (Frank, 2026-10-05)
 
 ## Open questions
+- Main document per phase, chosen by Claude: 1b is the PRD rather than behaviors.md (the PRD
+  names what the MVP adds); 6 is the item's LLD although the code is the real output; 7 has no
+  document of its own, so it names the plan, where findings become items. Frank to confirm.
 - None for this journey.
