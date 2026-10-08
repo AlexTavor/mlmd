@@ -109,7 +109,7 @@ in one line why the step exists.
 Five settings decide which steps wait for you:
 
 - accepting an item's design before its code is written;
-- using a finished batch before the next one starts;
+- using a finished cycle before the next one starts;
 - merging an item;
 - pushing to origin;
 - releasing.
@@ -130,8 +130,8 @@ status from git yet.
 Until the plugin exists, you can run the process by hand with Claude Code:
 
 1. Make a folder and a git repository for the project.
-2. Put [process.md](process.md) where your sessions can read it. Start with phase 1a: tell the
-   session to read it and interview you for the Vision.
+2. Put [process.md](process.md) where your sessions can read it. Start with phase 1, `docs/vision.md`:
+   tell the session to read it and interview you for the Vision.
 3. For each review, start a fresh session, give it the document, and ask it the questions the phase
    lists.
 4. Merge with the procedure in process.md's Git section.

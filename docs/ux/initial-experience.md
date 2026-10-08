@@ -14,9 +14,9 @@ where they left. At 100K tokens over the session's start
 mlmd suggests a new session; at 500K it urges one and helps split the work; if ignored, it explains
 what large contexts cost. (Frank, 2026-10-05, agreed with Alex; BR-38, D-18, D-19)
 
-The sliding happens within a phase. A session never crosses into the next phase: each phase starts in
-a new session, even when the context is still small. (Alex, 2026-10-06, confirmed by Frank; BR-22,
-D-21)
+The sliding happens within a document. A session never crosses into the next document: work on
+each document starts in a new session, even when the context is still small. (Alex, 2026-10-06,
+confirmed by Frank; BR-22, D-21; per document since D-28)
 
 ## Users
 
@@ -50,8 +50,8 @@ D-21)
 - Each document is introduced by its canonical purpose line from process.md, word for word,
   with its phase: "Requirements · `docs/vision.md` · Decide the whole product: what it is and which
   MVP each feature belongs to". (Frank, 2026-10-08; replaces the per-phase lines, D-29)
-- Before the first question: one screen with the phases, where the user is, and one line on why
-  this phase exists (BR-29). (Frank, 2026-10-05)
+- Before the first question: one screen with the four phases, where the user is, and the current
+  document with its purpose line (BR-29). (Frank, 2026-10-05; per document since D-29)
 - A joiner is asked their role on first start and mlmd records it in the register; the technical
   expert can review it later. (Frank, 2026-10-05)
 
@@ -94,14 +94,16 @@ D-21)
 
   ```
   Foundation check
-    glossary  23 terms, solid. Card-rule terms come straight from the CR.
-    footguns  4 drafted; thin. ADR-0023/24 show boot-prompt traps, likely more.
-    rules     11 from AGENT-RULES.md; 3 have no enforcement yet.
+    glossary     23 terms, solid. Card-rule terms come straight from the CR.
+    footguns     4 drafted; thin. ADR-0023/24 show boot-prompt traps, likely more.
+    rules        11 from AGENT-RULES.md; 3 have no enforcement yet.
+    assumptions  6 drafted; 2 high-fragility, 1 with no detector.
   My call: footguns and rules need another pass before phase work.
     1 Go deeper (rules is your domain: enforcement)   2 Move on anyway
   ```
 
   Only the operator's answer moves the work on (BR-40). (Frank, 2026-10-08; UX test on mtg-judge)
+  The foundation pass and the check include assumptions. (Frank, 2026-10-08; D-30)
 
 ### 5. First output
 - Processing is shown as a summary at the end of each topic: what was written to which document
