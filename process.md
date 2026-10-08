@@ -73,7 +73,7 @@ Tooling this process needs).
 - **Learning as you go:** the first time a step runs in a project, the session says in one line why
   the step exists.
 
-## 0. Sessions
+## Sessions
 
 Keep each session small, and slide from topic to topic within a phase. A topic is a section of a
 document being filled (in 1a: problem, users and core; features and MVPs; constraints; what to keep
