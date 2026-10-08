@@ -82,6 +82,23 @@ D-21)
   counts and source, no content repeated). (Frank, 2026-10-05, agreed with Alex)
 - Before the summary, mlmd checks each "imported unchanged" count against the file it wrote. (Frank, 2026-10-07; UX test)
 
+### 5b. Foundation pass and standing documents
+- On a code-and-specs start, before phase work, mlmd drafts the glossary, footguns and rules from
+  the existing material, then offers: 1 go through it together, 2 get mlmd's impression of it
+  (BR-39). (Frank, 2026-10-08; UX test on mtg-judge)
+- At the end of each topic mlmd reports on the standing documents and makes a call, for example:
+
+  ```
+  Foundation check
+    glossary  23 terms, solid. Card-rule terms come straight from the CR.
+    footguns  4 drafted; thin. ADR-0023/24 show boot-prompt traps, likely more.
+    rules     11 from AGENT-RULES.md; 3 have no enforcement yet.
+  My call: footguns and rules need another pass before phase work.
+    1 Go deeper (rules is your domain: enforcement)   2 Move on anyway
+  ```
+
+  Only the operator's answer moves the work on (BR-40). (Frank, 2026-10-08; UX test on mtg-judge)
+
 ### 5. First output
 - Processing is shown as a summary at the end of each topic: what was written to which document
   and section, and who decided it. (Frank, 2026-10-05)
