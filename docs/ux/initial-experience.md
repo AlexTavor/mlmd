@@ -112,7 +112,7 @@ D-21)
   next question) and continues there (BR-26). (Frank, 2026-10-05)
 - Every session opens with its goal in one or two sentences (what it will achieve and why now),
   then the status line, then the first question. It doesn't list the outputs or what it needs from
-  the user; those follow from the conversation. (Frank, 2026-10-06; UX test session 3)
+  the user; those follow from the conversation. (Frank, 2026-10-06; UX test 3)
 - Overview, so the user never feels lost (Frank, 2026-10-07; UX test):
   - the status line has two lines: the phase map (`1a ✓ › 1b ● › 2 Architecture › …`) and the
     current phase's topics with counts, ending with "your focus: …". The user can ask "where are

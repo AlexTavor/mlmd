@@ -87,7 +87,7 @@ product.
 ready, what's waiting for you, and the address of the plan view. Then do one of these:
 - start a new worktree session (the desktop app's worktree option, or `claude --worktree`), and
   mlmd gives it the next ready item;
-- in a session in the project folder, run `/clear` and then `/mlmd:next`.
+- in a conversation in the project folder, run `/clear` to start a new session, then `/mlmd:next`.
 
 Say go, and the session does the item. To work on several items at once, start more sessions.
 Each one takes a different item.

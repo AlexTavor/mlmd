@@ -17,6 +17,9 @@ For developers who know how to build software and have not built much with an ag
 - **Batch:** a group of work items in an MVP's plan, with a goal and exit criteria.
 - **Work item:** one unit of work in the plan, done on its own branch.
 - **Your items:** plan items only you can close: an MVP's verdict, a stop the trust level asks for.
+- **Session:** one new technical session of the LLM, with a new context. Nothing else is called a
+  session. `/clear` ends one and starts the next in the same conversation (the desktop app's
+  sidebar entry), so a conversation can hold several sessions.
 - **Fresh session:** a session that did not write the work it is given, started from the documents.
 - **The gates:** the checks that run before main moves.
 
@@ -56,7 +59,7 @@ Tooling this process needs).
   waits for you, and the plan view's address. Then either:
   - start a new worktree session: the desktop app's worktree option, or `claude --worktree`. mlmd
     gives it the next ready item, the session names the item, and you say go; or
-  - in a session in the project folder, `/clear`, then `/mlmd:next`.
+  - in a conversation in the project folder, `/clear` to start a new session, then `/mlmd:next`.
 
   For parallel work, start another session. Each one takes a different ready item.
 - **Other commands:** `/mlmd:status` shows the plan in the chat. `/mlmd:trust` shows and changes the
