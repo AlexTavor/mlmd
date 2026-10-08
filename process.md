@@ -70,7 +70,11 @@ Tooling this process needs).
   - **code and specs first:** mlmd asks which code and specs to read, and lets you pick from the
     candidates it finds when it isn't sure which you mean. It reads them, showing progress if that
     takes more than about 20 seconds, lists the documents it will fill and why, writes what the
-    sources mean into them, then asks only about gaps and contradictions. It runs you through every
+    sources mean into them, then asks only about gaps and contradictions. Before the Vision's first
+    topic it makes a foundation pass: it drafts the glossary, footguns, rules and assumptions from
+    the existing material (code, tests, specs, decision records, agent rules), then offers to go
+    through the drafts with you or to give you its impression of them (Frank, 2026-10-08; Alex to
+    confirm). It runs you through every
     document from the Vision on, however far the existing project got: each is filled from what
     exists and asks only what is missing. Its topics are the sections of the document, in order; a topic with nothing to ask still gets its summary. Each topic's summary lists what was
     decided today, what changed from the sources, and what was imported unchanged. From then on
@@ -194,6 +198,11 @@ organization is the second.
 ### Standing documents
 
 Phase 1 creates all of these, including the ones that start empty.
+
+**The foundation check.** At the end of each topic, mlmd says how the glossary, footguns, rules
+and assumptions are doing, and makes its own call, with its reasons, on whether they need more
+attention. It then asks you to move on or go deeper, and suggests going deeper where a document is
+in your own domain. Only your answer moves the work on. (Frank, 2026-10-08; Alex to confirm.)
 
 **`CLAUDE.md`** (project root). Claude Code loads this file into every session automatically. No
 other file is loaded unless something asks for it. It holds:
