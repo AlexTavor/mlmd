@@ -12,7 +12,25 @@ For developers who know how to build software and have not built much with an ag
 
 - **Operator:** the person running the process with the agent. They answer, decide, use what's
   built and approve the stops. This document calls them \"you\".
-- **Phase:** a step of this process, 1a to 8.
+- **Phase:** a step of this process with one purpose. It reads documents, writes documents, and
+  ends at a gate where you approve (or, at the end of a batch or an MVP, give a verdict) and the
+  work is merged. A phase starts in a new session and can take several. The purposes below are
+  canonical: mlmd introduces every phase with its line, word for word. The numbers are anchors.
+
+  | # | What it's for | Runs |
+  | --- | --- | --- |
+  | [1a](#1a-the-whole-product) | Decide the whole product: what it is and which MVP each feature belongs to | once |
+  | [1b](#1b-an-mvp) | Decide one MVP: what it's for and how it behaves | per MVP |
+  | [1.5](#15-refinement) | Settle the questions that change behavior but not structure | per MVP |
+  | [2](#2-architecture-then-stack) | Design the architecture, then pick the stack | per MVP |
+  | [3](#3-spikes) | Prove the risky assumptions before building on them | per MVP |
+  | [4](#4-plan-the-build) | Plan the build in batches | per MVP |
+  | [5](#5-batch-design) | Design a batch that changes the architecture | per batch |
+  | [6](#6-work-items) | Design, build, attack and merge each work item | per batch, item by item |
+  | [7](#7-end-of-a-batch) | Check a batch: mutation testing and a reading pass | per batch |
+  | [8](#8-end-of-an-mvp-and-release) | Judge the MVP and release it | per MVP |
+
+  Setting up a project and the rules for how sessions run (see Sessions) are not phases.
 - **MVP:** one increment of the product, with its own PRD and verdict. Each MVP runs phases 1b to 8.
 - **Batch:** a group of work items in an MVP's plan, with a goal and exit criteria.
 - **Work item:** one unit of work in the plan, done on its own branch.

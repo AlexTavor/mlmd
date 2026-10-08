@@ -46,6 +46,9 @@ D-21)
   folder or an existing repo and runs `git init` itself if needed, so the session works in the
   project folder and one-click cards can appear. (Frank, 2026-10-05)
 - mlmd asks which entry applies: 1 Idea or law, 2 Code and specs, 3 Joining. (Frank, 2026-10-05)
+- Phases are introduced by their canonical purpose line from process.md (Words, Phase), word for
+  word, with the number as an anchor: "1a · Decide the whole product: what it is and which MVP each
+  feature belongs to". (Frank, 2026-10-08)
 - Before the first question: one screen with the phases, where the user is, and one line on why
   this phase exists (BR-29). (Frank, 2026-10-05)
 - A joiner is asked their role on first start and mlmd records it in the register; the technical

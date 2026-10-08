@@ -36,18 +36,18 @@ business meaning mlmd writes into its documents first.
 A project goes through these phases. Each one runs in its own Claude Code session and ends by
 writing its results to files.
 
-| Phase | What happens | What you do |
+| Phase | What it's for | What you do |
 | --- | --- | --- |
-| 1a | The Vision: the whole product, and which MVP each feature belongs to | Answer the interview, decide |
-| 1b | An MVP: what it's for, its behaviors, and behavior tests in Gherkin | Keep it small |
-| 1.5 | The questions that change behavior but not the architecture | Rule on the defaults |
-| 2 | The architecture, then the stack | Walk each behavior through the architecture |
-| 3 | Spikes for the risky assumptions | Read the verdicts |
-| 4 | The build plan: work items in batches, with their dependencies | Read the plan |
-| 5 | A design for each batch that changes the architecture | Answer its questions |
-| 6 | Each batch's item designs, reviewed together; then each item: code, attack, merge | Approve the stops you kept |
-| 7 | The end of a batch: mutation testing and a reading pass | Use what was built |
-| 8 | The end of an MVP: its verdict, and a release | Give the verdict |
+| 1a | Decide the whole product: what it is and which MVP each feature belongs to | Answer the interview, decide |
+| 1b | Decide one MVP: what it's for and how it behaves | Keep it small |
+| 1.5 | Settle the questions that change behavior but not structure | Rule on the defaults |
+| 2 | Design the architecture, then pick the stack | Walk each behavior through the architecture |
+| 3 | Prove the risky assumptions before building on them | Read the verdicts |
+| 4 | Plan the build in batches | Read the plan |
+| 5 | Design a batch that changes the architecture | Answer its questions |
+| 6 | Design, build, attack and merge each work item | Approve the stops you kept |
+| 7 | Check a batch: mutation testing and a reading pass | Use what was built |
+| 8 | Judge the MVP and release it | Give the verdict |
 
 Each later MVP runs phases 1b to 8 again. [process.md](process.md) has every phase in full: what to
 ask for, when it's done, and why it's there.
