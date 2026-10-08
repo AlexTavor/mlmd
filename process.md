@@ -8,6 +8,31 @@ the PRD per MVP follow RUP's Vision and iteration plans. The evidence for the bu
 
 For developers who know how to build software and have not built much with an agent.
 
+## The shape of the process
+
+mlmd is the whole process. It breaks into four phases:
+
+1. **Requirements:** what the product is and what it does.
+2. **Functional design and plan:** how the product divides into logical components, and the plan
+   for building them.
+3. **Technical design:** the HLD and LLDs of what is built next.
+4. **Implementation:** building it, checking it and merging it.
+
+Phases 3 and 4 run in cycles called **sprints**, one per logical component (or group of
+components) the plan says to build next. (Frank, 2026-10-08.)
+
+How today's sections map onto the four, proposed by Claude and still open:
+
+| Phase | Today's sections |
+| --- | --- |
+| 1 Requirements | 1a the whole product, 1b an MVP, 1.5 refinement |
+| 2 Functional design and plan | 2 architecture and stack, 3 spikes, 4 plan the build |
+| 3 Technical design (per sprint) | 5 batch design, the LLDs of 6 |
+| 4 Implementation (per sprint) | the code, attack and merge of 6; 7 end of a batch; 8 verdict and release |
+
+A sprint is today's batch. The rest of this document still uses the older numbering until it is
+rewritten around documents (D-26).
+
 ## Words
 
 - **Operator:** the person running the process with the agent. They answer, decide, use what's
@@ -19,16 +44,16 @@ For developers who know how to build software and have not built much with an ag
 
   | # | What it's for | Main document | Runs |
   | --- | --- | --- | --- |
-  | `docs/vision.md` | [1a](#1a-the-whole-product) | Decide the whole product: what it is and which MVP each feature belongs to | once |
-  | `docs/prd/mvp-N.md` | [1b](#1b-an-mvp) | Decide one MVP: what it's for and how it behaves | per MVP |
-  | `docs/open-questions.md` | [1.5](#15-refinement) | Settle the questions that change behavior but not structure | per MVP |
-  | `docs/architecture.md` | [2](#2-architecture-then-stack) | Design the architecture, then pick the stack | per MVP |
-  | `docs/spikes/<name>.md` | [3](#3-spikes) | Prove the risky assumptions before building on them | per MVP |
-  | `.pdd/plan.json` | [4](#4-plan-the-build) | Plan the build in batches | per MVP |
-  | `docs/hld/<batch>.md` | [5](#5-batch-design) | Design a batch that changes the architecture | per batch |
-  | `docs/lld/W<id>-<name>.md` | [6](#6-work-items) | Design, build, attack and merge each work item | per batch, item by item |
-  | `.pdd/plan.json` | [7](#7-end-of-a-batch) | Check a batch: mutation testing and a reading pass | per batch |
-  | `docs/prd/mvp-N.md` | [8](#8-end-of-an-mvp-and-release) | Judge the MVP and release it | per MVP |
+  | [1a](#1a-the-whole-product) | Decide the whole product: what it is and which MVP each feature belongs to | `docs/vision.md` | once |
+  | [1b](#1b-an-mvp) | Decide one MVP: what it's for and how it behaves | `docs/prd/mvp-N.md` | per MVP |
+  | [1.5](#15-refinement) | Settle the questions that change behavior but not structure | `docs/open-questions.md` | per MVP |
+  | [2](#2-architecture-then-stack) | Design the architecture, then pick the stack | `docs/architecture.md` | per MVP |
+  | [3](#3-spikes) | Prove the risky assumptions before building on them | `docs/spikes/<name>.md` | per MVP |
+  | [4](#4-plan-the-build) | Plan the build in batches | `.pdd/plan.json` | per MVP |
+  | [5](#5-batch-design) | Design a batch that changes the architecture | `docs/hld/<batch>.md` | per batch |
+  | [6](#6-work-items) | Design, build, attack and merge each work item | `docs/lld/W<id>-<name>.md` | per batch, item by item |
+  | [7](#7-end-of-a-batch) | Check a batch: mutation testing and a reading pass | `.pdd/plan.json` | per batch |
+  | [8](#8-end-of-an-mvp-and-release) | Judge the MVP and release it | `docs/prd/mvp-N.md` | per MVP |
 
   Setting up a project and the rules for how sessions run (see Sessions) are not phases.
 - **MVP:** one increment of the product, with its own PRD and verdict. Each MVP runs phases 1b to 8.
