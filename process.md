@@ -350,6 +350,19 @@ Both are deep dives (see Sessions), and either can come up in any phase. A PoC b
 - **Ready when:** the verdict is written, and the decision that follows from it cites it. The code
   is thrown away. Say so when asking for it; otherwise the agent will reuse it as a base.
 
+## Review records
+
+### `docs/reviews/<document>.md`
+
+- **For:** Record a review's findings and how each was settled.
+- **Needs:** a fresh-session review of a document: design-review of the Vision, a PRD with its
+  behaviors, architecture.md, or a cycle's designs.
+- **Holds:** each finding, with its status and how it was settled.
+- The review reads the documents under review; it reads the sources (an imported PRD, for
+  example) only when a check needs them. Its findings are settled like gap questions, one at a
+  time. A finding that would overturn one of your decisions comes to you as a question.
+- **Ready when:** every finding is settled. The document it reviewed isn't ready before then.
+
 ## The plan
 
 **`.pdd/plan.json`** is the project's one plan, from the first session to the last. It uses PDD's
@@ -623,10 +636,7 @@ structure.
   - a large question about a later feature that is neither answered nor listed among what the
     architecture must keep possible.
 
-  The review reads the documents under review; it reads the sources (an imported PRD, for example)
-  only when a check needs them. Its findings are settled like gap questions, one at a time, and
-  recorded with their status in `docs/reviews/<document>.md`, whose For line is: Record a review's
-  findings and how each was settled.
+  Its findings are recorded in `docs/reviews/vision.md` (see Review records).
 - **You:** answer, decide, reject. Read every decision marked as the agent's: each topic summary
   ends with a block "mlmd decided, please confirm", one numbered line each, and you reply "ok" or,
   for example, "2: no".
