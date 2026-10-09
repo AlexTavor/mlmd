@@ -48,8 +48,9 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   project folder and one-click cards can appear. (Frank, 2026-10-05)
 - mlmd asks which entry applies: 1 Idea or law, 2 Code and specs, 3 Joining. (Frank, 2026-10-05)
 - Each document is introduced by its canonical purpose line from process.md, word for word,
-  with its phase: "Requirements · `docs/vision.md` · Decide the whole product: what it is and which
-  MVP each feature belongs to". (Frank, 2026-10-08; replaces the per-phase lines, D-29)
+  with its phase: "Requirements · `docs/vision.md` · Decide the whole product: what it is, and
+  which increment each feature belongs to". (Frank, 2026-10-08; replaces the per-phase lines,
+  D-29; line revised 2026-10-09, D-33)
 - Before the first question: one screen with the four phases, where the user is, and the current
   document with its purpose line (BR-29). (Frank, 2026-10-05; per document since D-29)
 - A joiner is asked their role on first start and mlmd records it in the register; the technical
@@ -68,8 +69,8 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   - it runs the user through every document from the Vision on, even when the project is further
     along, since mlmd targets enterprise applications;
   - topics are the sections of the document being worked on, in order (for vision.md:
-    problem, users and core; features and MVPs; constraints; what to keep possible; standing
-    documents). Each gap question belongs to its section's topic. The count is per topic and
+    problem, users and core; features, increments and MVPs; constraints; what to keep possible;
+    standing documents). Each gap question belongs to its section's topic. The count is per topic and
     overall ("constraints, 1 of 2; question 4 of 5"). A topic with no gaps gets a one-line summary;
   - a gap that decides what gets written at all (scope) is asked before writing;
   - once imported, mlmd's documents are the only master copy.
@@ -77,6 +78,10 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
     decisions already written, shows what is done and where it stopped, and continues from there.
     Settled questions are never asked again. (Frank, 2026-10-07; UX test)
   (Frank, 2026-10-05, agreed with Alex)
+- In the Vision's topic on features, increments and MVPs, mlmd asks whether the work is a set of
+  features to build or tests a product viability hypothesis. A hypothesis makes an MVP; without
+  one the work is Product Increments alone, the "no" is recorded as a decision, and mlmd asks again
+  at the start of each increment. (Frank, 2026-10-09; D-33)
 - A count that grows with a follow-up question says so: "question 4 of 4 (1 added)". (Frank, 2026-10-07; UX test)
 - Each question ends with one line saying what the answer decides. (Frank, 2026-10-07; UX test)
 
@@ -110,7 +115,7 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   and section, and who decided it. (Frank, 2026-10-05)
 - Every summary ends with a separate block, "mlmd decided, please confirm": one numbered line per
   decision mlmd made itself. The user replies "ok" or, for example, "2: no". (Frank, 2026-10-06)
-- A feature that depends on a later phase (a spike, for example) is marked so in the Vision's
+- A feature that depends on a later phase (a PoC, for example) is marked so in the Vision's
   feature line and under "needed by" in open-questions.md. (Frank, 2026-10-07; UX test)
 
 ### 6. Next session

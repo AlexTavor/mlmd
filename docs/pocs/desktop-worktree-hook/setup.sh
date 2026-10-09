@@ -12,7 +12,7 @@ chmod +x "$target"/.claude/hooks/*.sh
 cp "$here/settings.json" "$target/.claude/settings.json"
 cd "$target"
 git init -q -b main
-printf '# mlmd spike: desktop worktree hook\n\nThrowaway. See mlmd/docs/spikes/desktop-worktree-hook.md.\n' > README.md
+printf '# mlmd spike: desktop worktree hook\n\nThrowaway. See mlmd/docs/pocs/desktop-worktree-hook.md.\n' > README.md
 git add -A
 git -c user.name=spike -c user.email=spike@localhost commit -q -m "Spike repository"
 echo "setup: $target is ready. The hooks log to $target.log"

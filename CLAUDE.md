@@ -6,7 +6,8 @@ an agent: it leaves out the engineering they already know and covers what change
 writes the code. The readers are experienced developers, not juniors.
 
 - `process.md`: the process, in four phases centred on documents: sessions, documents, the plan, trust, git, tools,
-  requirements, architecture, spikes, and the build through release.
+  requirements, architecture, spikes, PoCs and prototypes, and the build through each
+  increment's release.
 - `research/`: the evidence behind it, one dated file per piece of research.
 - `UNHANDLED_ISSUES.md`: issues found outside the current task.
 

@@ -1,4 +1,4 @@
-# Spike: do the trust boxes stop anything?
+# PoC: do the trust boxes stop anything?
 
 - **Assumption:** A1 in [assumptions.md](../assumptions.md).
 - **Question:** do `ask` permission rules in a project's `.claude/settings.json` stop the merge,
@@ -39,7 +39,7 @@ with `Failed to authenticate. API Error: 401 OAuth access token is invalid.`
 
 Changes to the method:
 
-- **No model.** As in the worktree-switching spike, `spike.py <variant> <mode> <dir>` points the
+- **No model.** As in the worktree-switching PoC, `spike.py <variant> <mode> <dir>` points the
   CLI at a fake Messages API on 127.0.0.1. Each form in `prompt.txt` is its own user turn, and the
   fake API answers it with one Bash call for that form. Everything else is Claude Code's own
   code: the permission rules, the modes and the calls to the hook. The CLI runs with
@@ -177,7 +177,7 @@ Still open:
 - Whether the question shows on screen, in the CLI and in the desktop app. The operator's steps are
   below.
 - Auto mode with the real model, for the three "not tested" cells. After `claude update` and
-  `claude auth login`, run `SPIKE_DIR=/tmp/trust-real sh docs/spikes/trust-enforcement/run.sh
+  `claude auth login`, run `SPIKE_DIR=/tmp/trust-real sh docs/pocs/trust-enforcement/run.sh
   rules auto` from the mlmd repository. `check.sh` prints each command and its result. `run.sh`
   uses the operator's real config, where the toy folder is not trusted. If the updated CLI ignores
   untrusted allow rules as 2.1.284 does, all eight forms the rules miss go to the classifier.
@@ -186,7 +186,7 @@ Still open:
 git, bash and sh command, so use it only for this check.
 
 1. In a terminal, run
-   `sh docs/spikes/trust-enforcement/setup.sh /tmp/trust-manual both && cd /tmp/trust-manual/toy && claude --version && claude`.
+   `sh docs/pocs/trust-enforcement/setup.sh /tmp/trust-manual both && cd /tmp/trust-manual/toy && claude --version && claude`.
    Accept the trust dialog. Ask: "Run exactly this with the Bash tool:
    git push origin HEAD:refs/heads/c1". A question should appear; answer no. Then ask the same
    for `git -C /private/tmp/trust-manual/toy push origin HEAD:refs/heads/c2`. This question comes
@@ -195,8 +195,8 @@ git, bash and sh command, so use it only for this check.
    `claude --permission-mode bypassPermissions`.
 2. Run `git -C /tmp/trust-manual/origin.git for-each-ref --format='%(refname:short)'`. It should
    print only `main`.
-3. In the desktop app: run `sh docs/spikes/trust-enforcement/setup.sh /tmp/trust-manual-app both`,
+3. In the desktop app: run `sh docs/pocs/trust-enforcement/setup.sh /tmp/trust-manual-app both`,
    open a session on `/tmp/trust-manual-app/toy`, and ask for the same two commands with
    `/private/tmp/trust-manual-app/toy` and refs c7 and c8. Do it in auto mode, the mode the app
-   used in the worktree-switching spike, and again in bypass mode if the app offers it. Write down
+   used in the worktree-switching PoC, and again in bypass mode if the app offers it. Write down
    whether a question appears and what it says, and check the refs as in step 2.

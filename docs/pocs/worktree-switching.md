@@ -1,4 +1,4 @@
-# Spike: can a session move from one item's worktree to the next?
+# PoC: can a session move from one item's worktree to the next?
 
 - **Assumption:** A2 in [assumptions.md](../assumptions.md).
 - **Question:** a session starts in the project folder. Can it enter an item's worktree made
@@ -132,9 +132,9 @@ Still open:
 1. In a terminal:
 
    ```sh
-   docs/spikes/worktree-switching/setup.sh /tmp/wt-manual
+   docs/pocs/worktree-switching/setup.sh /tmp/wt-manual
    mkdir /tmp/wt-manual/toy/.claude
-   cp docs/spikes/worktree-switching/settings.json docs/spikes/worktree-switching/worktree-create.sh /tmp/wt-manual/toy/.claude/
+   cp docs/pocs/worktree-switching/settings.json docs/pocs/worktree-switching/worktree-create.sh /tmp/wt-manual/toy/.claude/
    cd /tmp/wt-manual/toy && claude --version && claude
    ```
 

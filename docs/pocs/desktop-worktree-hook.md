@@ -1,4 +1,4 @@
-# Spike: does the desktop app call mlmd's WorktreeCreate hook?
+# PoC: does the desktop app call mlmd's WorktreeCreate hook?
 
 - **Assumption:** A3 in [assumptions.md](../assumptions.md).
 - **Question:** when a session starts with the desktop app's worktree option, does the app call

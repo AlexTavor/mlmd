@@ -39,13 +39,17 @@ it to the repository.
 
 | Phase | Documents, and what each is for | What you do |
 | --- | --- | --- |
-| 1 Requirements | `vision.md`: decide the whole product: what it is and which MVP each feature belongs to. The MVP's PRD: decide one MVP: what it's for and what result would be a no. `behaviors.md`: state what the product does: contract, failure, edges. The Gherkin features: make each behavior testable. The medium open questions: settle the questions that change behavior but not structure | Answer the interview, decide, rule on the defaults |
-| 2 Functional design and plan | `architecture.md`: divide the product into logical components and walk every behavior through them. `stack.md`: pick what supports the requirements and the architecture. Spikes: prove a risky assumption before anything is built on it. The plan: plan the build: cycles of work items, with their dependencies | Walk each behavior through the architecture, read the verdicts and the plan |
+| 1 Requirements | `vision.md`: decide the whole product: what it is, and which increment each feature belongs to. The MVP's document, when there is a viability hypothesis: state a viability hypothesis, the result that refutes it, and the increments that test it. The increment's PRD: decide one increment: what it's for, and the related features it releases. `behaviors.md`: state what the product does: contract, failure, edges. The Gherkin features: make each behavior testable. The medium open questions: settle the questions that change behavior but not structure | Answer the interview, decide, rule on the defaults |
+| 2 Functional design and plan | `architecture.md`: divide the product into logical components and walk every behavior through them. `stack.md`: pick what supports the requirements and the architecture. PoCs: prove that a risky assumption can work before anything is built on it. The plan: plan the build: cycles of work items, with their dependencies | Walk each behavior through the architecture, read the verdicts and the plan |
 | 3 Technical design, per cycle | The cycle's HLD: design a cycle that changes the architecture. Each item's LLD: design one work item | Answer the design questions |
-| 4 Implementation, per cycle | The cycle report: build, attack and merge each item, then check the cycle: mutation testing and a reading pass. At the end of an MVP, the verdict in its PRD: judge the MVP and release it | Approve the stops you kept, use what was built, give the verdict |
+| 4 Implementation, per cycle | The cycle report: build, attack and merge each item, then check the cycle: mutation testing and a reading pass. At the end of an increment, the release in its PRD: release the increment and record what using it showed. At the end of an MVP, its verdict: judge the MVP against its hypothesis | Approve the stops you kept, use what was built and released, give the verdict |
 
-Phases 3 and 4 repeat as cycles, one per logical component the plan builds next. A later MVP goes
-any way a feature iteration goes, from the earliest document it changes.
+The product is delivered in **Product Increments**, each a complete release of a set of related
+features. When there is a testable product viability hypothesis, an **MVP** groups the increments
+that test it. mlmd asks for one, but doesn't require it. Each increment runs through the four
+phases; phases 3 and 4 repeat as cycles, one per logical component the plan builds next. A later
+increment goes any way a feature iteration goes, from the earliest document it changes. Spikes
+(how could we do this?) and prototypes (how should this work?) can come up in any phase.
 [process.md](process.md) has every document in full: what to ask for, when it's ready, and why
 it's there.
 
@@ -95,10 +99,11 @@ Each one takes a different item.
 | `/mlmd:next` | Shows where the project stands, and does the next ready item |
 | `/mlmd:status` | Shows the plan in the chat |
 | `/mlmd:trust` | Shows and changes which steps wait for you |
-| `/mlmd:release` | Tags and deploys a release |
+| `/mlmd:release` | Tags and deploys an increment's release |
 
 **What you do:** answer the interviews, decide what comes to you as a question, try what's built
-when an item asks you to, approve the stops you kept, and give each MVP its verdict.
+when an item asks you to, use each release, approve the stops you kept, and give each MVP its
+verdict.
 
 **What you don't do:** keep status, track which phase you're in, make branches or worktrees, run
 merges, or remember to run reviews. The first time a step runs in a project, the session tells you
@@ -112,7 +117,7 @@ Five settings decide which steps wait for you:
 - using a finished cycle before the next one starts;
 - merging an item;
 - pushing to origin;
-- releasing.
+- releasing an increment.
 
 A new project starts with all five on. Turn one off when its stops have stopped finding anything.
 An operation that can't be undone on real data, such as a migration against production, always
@@ -143,7 +148,7 @@ remembering each review.
 
 - [process.md](process.md): the process in full.
 - [research/](research/): the evidence it's drawn from.
-- [docs/](docs/): how mlmd itself is being built: its assumptions, its spikes and their results,
+- [docs/](docs/): how mlmd itself is being built: its assumptions, its PoCs and their results,
   and the traps found on the way.
 - [UNHANDLED_ISSUES.md](UNHANDLED_ISSUES.md): known issues not yet handled.
 
