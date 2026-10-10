@@ -98,11 +98,12 @@ per review, one session per item and one per attack).
   PI-2, what ends mlmd's wait after a release). The two F8 decisions above stay recorded.
 - **F9, three overviews** (Frank, 2026-10-10): one job each. Status line: where this session is.
   Pinned overview: what needs the operator. Plan view: the build, opened only once the plan
-  exists. Written into `initial-experience.md` §6; process.md's two lines on opening the plan view
-  every session are proposed in chat, not edited.
+  exists. Written into `initial-experience.md` §6, and into process.md (Sessions, The plan) on
+  Frank's yes, 2026-10-10.
 - **F9, a nudge** (Frank, 2026-10-10): when an item starts waiting for the operator while they work
-  elsewhere, a desktop notification, and the waiting conversation marked unread. How mlmd detects
-  it is Alex's (For Alex, 6).
+  elsewhere, a desktop notification, and the waiting conversation marked unread. Written into
+  process.md (Using mlmd, Overview) on Frank's yes, 2026-10-10. How mlmd detects it is Alex's
+  (For Alex, 6).
 
 ## For Alex
 

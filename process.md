@@ -105,7 +105,9 @@ Tooling this process needs).
   document with its purpose line.
 - **Overview:** in the desktop app mlmd keeps a pinned overview page, republished at each commit:
   what needs your attention first, then the four phases with where you are, then the current
-  document's topics. In the CLI, `/mlmd:status` shows the same.
+  document's topics. In the CLI, `/mlmd:status` shows the same. When one of your items starts
+  waiting while you work in another conversation, mlmd sends a desktop notification and marks that
+  conversation unread. (Frank, 2026-10-10.)
 - **The loop:** every session opens with its goal and a status line: what's done, what's ready, what
   waits for you, and the plan view's address. Then either:
   - start a new worktree session: the desktop app's worktree option, or `claude --worktree`. mlmd
@@ -161,7 +163,7 @@ ends, the next card returns you to the step you left, at the question where you 
 dives can nest.
 
 A session works in the worktree of the item it is on (see Git), and starts with the plan view open
-(see The plan).
+once the plan exists (see The plan).
 
 ## How each document is worked on
 
@@ -440,7 +442,8 @@ git, so it is right after every merge without anyone updating it.
   mlmd).
 - **Every session:** a SessionStart hook makes sure the plan view is running and shows you a status
   line before you type anything: done, ready, waiting for you, and the view's address. In the
-  Claude desktop app, the session opens the view in the browser pane. A session that finishes
+  Claude desktop app, once phase 2 has written the plan, the session opens the view in the browser
+  pane. A session that finishes
   something (a merge, a stop reached) names the items that changed.
 - **dod's always-on background agent** (macOS only) isn't needed. The hook starts the plan view
   when a session starts, and the view keeps running after the session ends. This hasn't been tried
