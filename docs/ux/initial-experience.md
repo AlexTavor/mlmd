@@ -122,7 +122,7 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   "Foundation: unchanged, still sound", and the work continues. Otherwise only the operator's
   answer moves the work on. Each go-deeper option names its subject and size, and the operator can
   answer "1, but in a new session" to take it as a deep dive. (Frank, 2026-10-08 and 2026-10-10;
-  UX test on mtg-judge; `foundation.md`, S2–S4; BR-40 change pending)
+  UX test on mtg-judge; `foundation.md`, S2–S4; BR-40, D-36)
   The foundation pass and the check include assumptions. (Frank, 2026-10-08; D-30)
 
 ### 5. First output

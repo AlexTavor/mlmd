@@ -194,10 +194,15 @@ The fresh-session review of a document belongs to that document's work.
 
 Phase 1 creates all of these, including the ones that start empty.
 
-**The foundation check.** At the end of each topic, mlmd says how the glossary, footguns, rules
-and assumptions are doing, and makes its own call, with its reasons, on whether they need more
-attention. It then asks you to move on or go deeper, and suggests going deeper where a document is
-in your own domain. Only your answer moves the work on. (Frank, 2026-10-08; Alex to confirm.)
+**The foundation check.** At the end of each topic, mlmd checks the glossary, footguns, rules and
+assumptions. It shows each entry that is new or changed since the last check, and what that change
+affects elsewhere in the product. It makes its own call, with its reasons, on whether they need
+more attention, and takes the time an issue needs to explain it and work it out with you. It then
+asks you to move on or go deeper. Each way of going deeper names its subject and size, and you can
+take it in a new session, as a deep dive. It suggests going deeper where a document is in your own
+domain. Only your answer moves the work on, except when nothing changed and mlmd sees nothing that
+needs attention: then the check is one line and the work goes on. (Frank, 2026-10-08 and
+2026-10-10; Alex to confirm.)
 
 ### `CLAUDE.md` (project root)
 

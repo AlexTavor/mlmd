@@ -71,7 +71,10 @@ test, where these documents got no attention and the work felt rushed and sloppy
   sound") and the work continues without a stop. mlmd safeguards the product's integrity: a check
   doesn't only list the changes, it checks whether each one changes anything else meaningful in
   the product the operator is working on (another entry, a behavior, a feature, a decision), and
-  says so. Changes BR-40: proposed, waiting for Frank's yes.
+  says so.
+- **BR-40 and process.md** (Frank, 2026-10-10): BR-40 revised for S2–S4 (D-36), and process.md's
+  foundation check rewritten to match, Alex to confirm.
+- **Next part: how terms and rules come up during the interview** (Frank, 2026-10-10): S1, S7.
 - **S4, going deeper** (Frank, 2026-10-10): each go-deeper option names its subject and size ("2
   questions on A4, here"). It is offered only where there is something to deepen; an empty
   footguns file in phase 1 reads "expected until the PoCs", with no option. The operator can
