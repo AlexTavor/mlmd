@@ -96,6 +96,13 @@ per review, one session per item and one per attack).
 - **Scope: the first increment only** (Frank, 2026-10-10). Everything beyond the first increment is
   for a later increment of mlmd's UX: step 17 of the map and the rest of F8 (the status line in
   PI-2, what ends mlmd's wait after a release). The two F8 decisions above stay recorded.
+- **F9, three overviews** (Frank, 2026-10-10): one job each. Status line: where this session is.
+  Pinned overview: what needs the operator. Plan view: the build, opened only once the plan
+  exists. Written into `initial-experience.md` §6; process.md's two lines on opening the plan view
+  every session are proposed in chat, not edited.
+- **F9, a nudge** (Frank, 2026-10-10): when an item starts waiting for the operator while they work
+  elsewhere, a desktop notification, and the waiting conversation marked unread. How mlmd detects
+  it is Alex's (For Alex, 6).
 
 ## For Alex
 
@@ -112,6 +119,8 @@ Mechanics gaps noticed while mapping. Not Frank's questions.
    change request. Which applies when a PoC changes a behavior?
 5. The cycle-end item when a cycle builds nothing the operator can open.
 6. How an operator learns that an item waits for them while they work in another conversation.
+   Frank chose the form (a desktop notification, the conversation marked unread); what detects the
+   wait and sends it is open.
 7. Does the plan start the sessions where the operator has no role (writing the features, the
    LLDs, the step definitions) by itself, one at a time, without the operator clicking a card?
    (Frank, 2026-10-10.)

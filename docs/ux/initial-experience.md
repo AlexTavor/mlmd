@@ -143,6 +143,14 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   - when work reopens a current document (a PoC verdict, an attack, a review), "your focus" says
     so in one line with the reason: "architecture.md reopened: PoC sync said the API has no batch
     writes". The step back then reads as intended. (Frank, 2026-10-10; `flow.md`, F7)
+- One job per overview (Frank, 2026-10-10; `flow.md`, F9):
+  - the status line: where this session is;
+  - the pinned overview: what needs the user, across the project;
+  - the dod plan view: the build. It opens only once the plan exists (phase 2 on), so the
+    interviews don't open an empty graph.
+- When one of the user's items starts waiting while they work in another conversation, mlmd sends a
+  desktop notification and marks the waiting conversation unread in the sidebar. (Frank,
+  2026-10-10; `flow.md`, F9)
 
 ## Decisions on joiners
 - A joiner's self-registered role counts immediately; no review step. Their GitHub push access
