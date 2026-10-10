@@ -85,6 +85,9 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   features to build or tests a product viability hypothesis. A hypothesis makes an MVP; without
   one the work is Product Increments alone, the "no" is recorded as a decision, and mlmd asks again
   at the start of each increment. (Frank, 2026-10-09; D-33)
+  Asked again, it is one line that shows the last answer: "No hypothesis yet (you, 2026-10-09).
+  Still none? 1 still none · 2 there is one now." A check-in, not a nag. (Frank, 2026-10-10;
+  `flow.md`, F8)
 - A count that grows with a follow-up question says so: "question 4 of 4 (1 added)". (Frank, 2026-10-07; UX test)
 - Each question ends with one line saying what the answer decides. (Frank, 2026-10-07; UX test)
 

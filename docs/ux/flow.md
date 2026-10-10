@@ -86,6 +86,13 @@ per review, one session per item and one per attack).
 - **F7, going backwards** (Frank, 2026-10-10): when work reopens a current document, the
   overview's "your focus" says so in one line with the reason. Written into
   `initial-experience.md` §6.
+- **F8, release payoff: dropped** (Claude, 2026-10-10, following Frank's "it is a job"; Frank may
+  reopen it).
+- **F8, after a release** (Frank, 2026-10-10): the operator sees the application, and mlmd waits
+  until a new increment (Frank: "feature batch") or MVP gets defined. mlmd doesn't push the next
+  increment.
+- **F8, the hypothesis asked again** (Frank, 2026-10-10): one line showing the last answer, a
+  check-in rather than a nag. Written into `initial-experience.md` §4.
 
 ## For Alex
 
