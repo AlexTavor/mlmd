@@ -101,19 +101,28 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
 - On a code-and-specs start, before phase work, mlmd drafts the glossary, footguns and rules from
   the existing material, then offers: 1 go through it together, 2 get mlmd's impression of it
   (BR-39). (Frank, 2026-10-08; UX test on mtg-judge)
-- At the end of each topic mlmd reports on the standing documents and makes a call, for example:
+- At the end of each topic mlmd reports on the standing documents and makes a call. It shows the
+  entries that are new or changed since the last check, and what each change affects elsewhere in
+  the product, for example:
 
   ```
-  Foundation check
-    glossary     23 terms, solid. Card-rule terms come straight from the CR.
-    footguns     4 drafted; thin. ADR-0023/24 show boot-prompt traps, likely more.
-    rules        11 from AGENT-RULES.md; 3 have no enforcement yet.
-    assumptions  6 drafted; 2 high-fragility, 1 with no detector.
-  My call: footguns and rules need another pass before phase work.
-    1 Go deeper (rules is your domain: enforcement)   2 Move on anyway
+  Foundation check, after "constraints"
+    new  glossary     member: not user, customer or account
+    new  rule R3      No data leaves the device. A promise until phase 2 builds its check.
+    new  assumption   A4 Members have one device each. High fragility, no detector yet.
+         footguns     empty, as expected until the PoCs
+    affects  B2 (sync between devices) rests on A4.
+    14 terms · 3 rules (0 checked) · 0 footguns · 4 assumptions (1 high)
+  My call: A4 needs a detector before the architecture rests on it.
+    1 Go deeper on A4: 2 questions, here   2 Move on
   ```
 
-  Only the operator's answer moves the work on (BR-40). (Frank, 2026-10-08; UX test on mtg-judge)
+  An issue that needs explaining gets explained in full and worked out with the operator, not
+  squeezed into a line. When nothing changed and nothing needs attention, the check is one line,
+  "Foundation: unchanged, still sound", and the work continues. Otherwise only the operator's
+  answer moves the work on. Each go-deeper option names its subject and size, and the operator can
+  answer "1, but in a new session" to take it as a deep dive. (Frank, 2026-10-08 and 2026-10-10;
+  UX test on mtg-judge; `foundation.md`, S2–S4; BR-40 change pending)
   The foundation pass and the check include assumptions. (Frank, 2026-10-08; D-30)
 
 ### 5. First output

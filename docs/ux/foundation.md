@@ -59,7 +59,24 @@ test, where these documents got no attention and the work felt rushed and sloppy
 
 ## Decisions
 
-None yet.
+- **Scope** (Frank, 2026-10-10): the glossary, rules and footguns, and assumptions.md. CLAUDE.md
+  only as what every session loads (S8); its trust boxes and Claims rule stay out.
+- **First part: the foundation check** (Frank, 2026-10-10): S2, S3 and S4.
+- **S2, what the check shows** (Frank, 2026-10-10): each entry that is new or changed since the
+  last check, one line each, then the totals and mlmd's call. When an entry warrants a deeper
+  discussion or explanation, mlmd is not held to one line: it takes the time to explain the issue
+  fully and works it out with the operator.
+- **S3, when it shows** (Frank, 2026-10-10): the full check only when an entry changed or mlmd's
+  call is that something needs attention; otherwise one line ("Foundation: unchanged, still
+  sound") and the work continues without a stop. mlmd safeguards the product's integrity: a check
+  doesn't only list the changes, it checks whether each one changes anything else meaningful in
+  the product the operator is working on (another entry, a behavior, a feature, a decision), and
+  says so. Changes BR-40: proposed, waiting for Frank's yes.
+- **S4, going deeper** (Frank, 2026-10-10): each go-deeper option names its subject and size ("2
+  questions on A4, here"). It is offered only where there is something to deepen; an empty
+  footguns file in phase 1 reads "expected until the PoCs", with no option. The operator can
+  answer "1, but in a new session": mlmd then commits, offers the deep dive as a card, and brings
+  the operator back to where they left (as any deep dive, BR-38).
 
 ## For Alex
 
