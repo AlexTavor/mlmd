@@ -73,6 +73,10 @@ per review, one session per item and one per attack).
 - **F3 is how mlmd works, not a problem** (Frank, 2026-10-10). "Done" means good enough to be the
   next Current, in the Agile sense, not finished. Documents are living, and they are mlmd's prime
   citizens, so a review that reopens one is expected.
+- **F1, follow-up** (Frank, 2026-10-10): the orientation screen says that code comes late, so the
+  priming doesn't depend on reading the README. Written into `initial-experience.md`.
+- **F3, follow-up** (Frank, 2026-10-10): the status line shows a ready document as "current", not
+  ✓. Written into `initial-experience.md`.
 - **F4 goes to Alex** (Frank, 2026-10-10): which rubber stamps can the process lose (For Alex, 8).
 
 ## For Alex

@@ -53,6 +53,9 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   D-29; line revised 2026-10-09, D-33)
 - Before the first question: one screen with the four phases, where the user is, and the current
   document with its purpose line (BR-29). (Frank, 2026-10-05; per document since D-29)
+- The same screen says, in one line, that code comes late: "Code comes in phase 4, as a side effect
+  of the requirements; the scenarios show what it will do." A user who starts from `mlmd.md` alone
+  may never read the README. (Frank, 2026-10-10; `flow.md`, F1)
 - A joiner is asked their role on first start and mlmd records it in the register; the technical
   expert can review it later. (Frank, 2026-10-05)
 
@@ -126,9 +129,10 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   the user; those follow from the conversation. (Frank, 2026-10-06; UX test 3)
 - Overview, so the user never feels lost (Frank, 2026-10-07; UX test):
   - the status line has two lines: the phase map with the current document
-    (`Requirements: vision.md ✓ › prd ● › behaviors › … | Functional design › …`) and the current
-    document's topics with counts, ending with "your focus: …". The user can ask "where are
-    we?" for it any time;
+    (`Requirements: vision.md current › prd ● › behaviors › … | Functional design › …`) and the
+    current document's topics with counts, ending with "your focus: …". The user can ask "where
+    are we?" for it any time. A ready document shows as "current", not ✓: it is good enough to be
+    the next Current, not finished, and may be reopened (Frank, 2026-10-10; `flow.md`, F3);
   - in the desktop app, a pinned overview artifact: "your focus now" first (open questions,
     decisions to confirm, the next session), then the phase strip, then the current document's topics.
     mlmd republishes it at each commit and shows when it was updated. In the CLI, `/mlmd:status`
