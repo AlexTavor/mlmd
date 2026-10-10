@@ -136,7 +136,10 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   - in the desktop app, a pinned overview artifact: "your focus now" first (open questions,
     decisions to confirm, the next session), then the phase strip, then the current document's topics.
     mlmd republishes it at each commit and shows when it was updated. In the CLI, `/mlmd:status`
-    shows the same.
+    shows the same;
+  - when work reopens a current document (a PoC verdict, an attack, a review), "your focus" says
+    so in one line with the reason: "architecture.md reopened: PoC sync said the API has no batch
+    writes". The step back then reads as intended. (Frank, 2026-10-10; `flow.md`, F7)
 
 ## Decisions on joiners
 - A joiner's self-registered role counts immediately; no review step. Their GitHub push access

@@ -78,6 +78,14 @@ per review, one session per item and one per attack).
 - **F3, follow-up** (Frank, 2026-10-10): the status line shows a ready document as "current", not
   ✓. Written into `initial-experience.md`.
 - **F4 goes to Alex** (Frank, 2026-10-10): which rubber stamps can the process lose (For Alex, 8).
+- **F6 goes to Alex** (Frank, 2026-10-10): what "use what the cycle built" means when a cycle
+  builds nothing the operator can open (For Alex, 5). Claude's proposal for him: a named thing to
+  open, or else the cycle's scenarios run and shown in plain language.
+- **F7, how much is left: no progress count** (Frank, 2026-10-10). "It is a job, you go at it until
+  it works." Knowing how much will still come doesn't matter to the operator.
+- **F7, going backwards** (Frank, 2026-10-10): when work reopens a current document, the
+  overview's "your focus" says so in one line with the reason. Written into
+  `initial-experience.md` §6.
 
 ## For Alex
 
