@@ -93,6 +93,9 @@ per review, one session per item and one per attack).
   increment.
 - **F8, the hypothesis asked again** (Frank, 2026-10-10): one line showing the last answer, a
   check-in rather than a nag. Written into `initial-experience.md` §4.
+- **Scope: the first increment only** (Frank, 2026-10-10). Everything beyond the first increment is
+  for a later increment of mlmd's UX: step 17 of the map and the rest of F8 (the status line in
+  PI-2, what ends mlmd's wait after a release). The two F8 decisions above stay recorded.
 
 ## For Alex
 
