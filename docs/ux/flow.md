@@ -92,7 +92,10 @@ per review, one session per item and one per attack).
   until a new increment (Frank: "feature batch") or MVP gets defined. mlmd doesn't push the next
   increment.
 - **F8, the hypothesis asked again** (Frank, 2026-10-10): one line showing the last answer, a
-  check-in rather than a nag. Written into `initial-experience.md` §4.
+  check-in rather than a nag. Written into `initial-experience.md` §4. Since 2026-10-11 asked
+  again only when the Vision is revised (Frank, accepting OQ-27f, D-37).
+- **F4 and F5, Alex's proposals accepted** (Frank, 2026-10-11): the operator approves decisions,
+  never whole documents (OQ-26), and fewer stops and names (OQ-27). D-37; Alex to confirm.
 - **Scope: the first increment only** (Frank, 2026-10-10). Everything beyond the first increment is
   for a later increment of mlmd's UX: step 17 of the map and the rest of F8 (the status line in
   PI-2, what ends mlmd's wait after a release). The two F8 decisions above stay recorded.
