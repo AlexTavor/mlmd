@@ -107,24 +107,25 @@ per review, one session per item and one per attack).
 
 ## For Alex
 
-Mechanics gaps noticed while mapping. Not Frank's questions.
+Mechanics gaps noticed while mapping. Not Frank's questions. Proposals for them are open
+questions in `docs/requirements.md`.
 
 1. The PRD's Ask writes the PRD and then the behaviors in one go, but a session never crosses a
-   document (BR-22).
+   document (BR-22). Proposal: OQ-22.
 2. The medium questions run "before phase 2, alongside it, or after it": nothing says when mlmd
    asks them.
 3. Architecture: does the operator walk every behavior, or does the agent walk them and the
-   operator check the cross-part ones?
+   operator check the cross-part ones? Proposal: OQ-26.
 4. process.md has documents change "in the same commit" as the work that finds the change (a PoC
    verdict, an attack); BR-18 has approved product and design documents reopened only through a
-   change request. Which applies when a PoC changes a behavior?
+   change request. Which applies when a PoC changes a behavior? Proposal: OQ-24.
 5. The cycle-end item when a cycle builds nothing the operator can open.
 6. How an operator learns that an item waits for them while they work in another conversation.
    Frank chose the form (a desktop notification, the conversation marked unread); what detects the
    wait and sends it is open.
 7. Does the plan start the sessions where the operator has no role (writing the features, the
    LLDs, the step definitions) by itself, one at a time, without the operator clicking a card?
-   (Frank, 2026-10-10.)
+   (Frank, 2026-10-10.) Proposal: OQ-25.
 8. Which of the operator's approvals can the process drop? Too much to read turns approval into a
    rubber stamp: every behavior, every rule, every agent decision, every LLD, the security code at
-   release (F4). (Frank, 2026-10-10.)
+   release (F4). (Frank, 2026-10-10.) Proposal: OQ-26, OQ-27.

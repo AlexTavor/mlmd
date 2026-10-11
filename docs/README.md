@@ -8,7 +8,10 @@ and decision is on the record.
 - [footguns.md](footguns.md): traps found on the way, where something looks like it does one
   thing and does another.
 - [requirements.md](requirements.md): proposed requirements for the business side and adoption
-  (roles, the decider, change requests, traceability), by Frank. Not yet agreed.
+  (roles, the decider, change requests, traceability), by Frank. Its status line names what
+  still waits for Alex.
+- [ux/](ux/): how mlmd feels to the operator: the first session (`initial-experience.md`) and the
+  flow through a product (`flow.md`).
 - [pocs/](pocs/): one document per PoC, with the question, what would be a no, where it ran,
   what was done, and the verdict. The scripts each PoC ran are in a folder next to its document.
 
