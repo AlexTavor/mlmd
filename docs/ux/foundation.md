@@ -106,3 +106,10 @@ Mechanics gaps noticed while mapping. Not Frank's questions.
 4. A phase 1 rule has no gate to name, since the gates are built in phase 2. Which tier does it
    carry until then, and what moves it?
 5. A footgun's Verified date: nothing says who re-checks it, or when.
+
+## Next
+
+Open for Frank, in a new session (2026-10-11): C, the foundation pass on an import (S5); and D,
+rules that visibly hold and why these documents matter (S6, S8). Since D-37 and D-38 the operator
+no longer reads every rule at the behaviors step, and a rule is agreed when it is made (S1), so
+what is left of S6 is the moment a rule becomes a real check.
