@@ -75,6 +75,17 @@ test, where these documents got no attention and the work felt rushed and sloppy
 - **BR-40 and process.md** (Frank, 2026-10-10): BR-40 revised for S2–S4 (D-36), and process.md's
   foundation check rewritten to match, Alex to confirm.
 - **Next part: how terms and rules come up during the interview** (Frank, 2026-10-10): S1, S7.
+- **S1, a term comes up** (Frank, 2026-10-11): mlmd asks on the spot only when there is a real
+  choice of word ("I'll call these 'members', not users or customers. 1 ok · 2 another word"). A
+  term with no choice goes into the glossary without a stop and shows as a new entry in the next
+  foundation check.
+- **S1, a constraint becomes a rule** (Frank, 2026-10-11): mlmd says it back at once as a rule and
+  asks the operator to agree it, since a rule binds every session ("Rule R3: no data leaves the
+  device. Every session will follow it; a check enforces it from phase 2. 1 ok · 2 change it").
+- **S7, the operator's domain** (Frank, 2026-10-11): mlmd asks once, in the Vision's first topic,
+  "Where do you know most? 1 the business · 2 the technology · 3 both". Business points the
+  go-deeper suggestions at the glossary and the assumptions about users and data; technology at
+  the rules, the footguns and the technical assumptions.
 - **S4, going deeper** (Frank, 2026-10-10): each go-deeper option names its subject and size ("2
   questions on A4, here"). It is offered only where there is something to deepen; an empty
   footguns file in phase 1 reads "expected until the PoCs", with no option. The operator can

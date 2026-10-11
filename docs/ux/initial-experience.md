@@ -90,6 +90,13 @@ confirmed by Frank; BR-22, D-21; per document since D-28)
   `flow.md`, F8)
 - A count that grows with a follow-up question says so: "question 4 of 4 (1 added)". (Frank, 2026-10-07; UX test)
 - Each question ends with one line saying what the answer decides. (Frank, 2026-10-07; UX test)
+- In the Vision's first topic mlmd asks once: "Where do you know most? 1 the business · 2 the
+  technology · 3 both". The answer decides where the foundation check suggests going deeper.
+  (Frank, 2026-10-11; `foundation.md`, S7)
+- A term with a real choice of word is asked on the spot ("I'll call these 'members', not users
+  or customers. 1 ok · 2 another word"); other terms show in the next foundation check. A
+  constraint that becomes a rule is said back at once and agreed, since every session will follow
+  it. (Frank, 2026-10-11; `foundation.md`, S1)
 
 ### 5a. Summary after an import
 - Three parts: **decided today** (decision, document and section, who); **changed from your
