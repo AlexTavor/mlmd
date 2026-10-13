@@ -113,3 +113,10 @@ Open for Frank, in a new session (2026-10-11): C, the foundation pass on an impo
 rules that visibly hold and why these documents matter (S6, S8). Since D-37 and D-38 the operator
 no longer reads every rule at the behaviors step, and a rule is agreed when it is made (S1), so
 what is left of S6 is the moment a rule becomes a real check.
+
+C started (Frank, 2026-10-13). Claude's proposal, not agreed: the pass becomes a triage (the
+contradictions first, then the rules to agree as one numbered list, then the terms with a real
+choice of word; the rest goes in as drafted and shows in the Vision's standing-documents topic),
+and the imported entries are the baseline for the first foundation check. Before answering, Frank
+runs a fresh brownfield UX test of mlmd on mtg-judge as it stands now, with the pass as BR-39
+writes it today, and gives feedback tagged OOC (`ux-test/findings.md`).
