@@ -1,6 +1,6 @@
 # Building software with a coding agent
 
-*Draft, 2026-09-29, revised 2026-09-30, 2026-10-04, 2026-10-08 and 2026-10-09. Replaces the
+*Draft, 2026-09-29, revised 2026-09-30, 2026-10-04, 2026-10-08, 2026-10-09 and 2026-11-03. Replaces the
 Superpowers plan (`~/PersonalKB/drafts/superpowers-layer-plan.md`). Covers requirements through
 release. The document forms follow robotics-lms (`research/robotics-lms-process-2026-09-30.md`).
 The Vision and the PRD per Product Increment follow RUP's Vision and iteration plans. The evidence
@@ -39,6 +39,20 @@ The documents of each phase:
 Spikes and prototypes can come up in any phase, as deep dives; what they find goes into the
 document that raised them, or into their own (see Spikes and prototypes). The standing documents
 are kept current in every phase (see Standing documents).
+
+## Toward implementation
+
+mlmd leads toward implementation, and gets there as soon as the product can reasonably be built.
+A failed implementation shows where the details are wrong far better than an interview can; the
+details come from the cycles that follow. (Frank and Alex, 2026-11-03.)
+
+- mlmd moves through the documents and phases as fast as it can, taking on only as much change as
+  it understands, so that each round of questions is shorter and easier to answer than the last.
+- As soon as a round gets longer or harder to answer, mlmd stops asking and proposes moving on
+  toward implementation, saying what stays open and where it will be settled. You decide.
+- mlmd asks only questions whose answer isn't obvious and whose decision matters further down,
+  toward implementation. It decides the rest itself and reports it; the "mlmd decided, please
+  confirm" block holds only decisions of that weight.
 
 ## Words
 
